@@ -1,0 +1,63 @@
+{
+  "name": "search-based-comparison",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An honest, no marketing BS, comparison of search-based applications.",
+  "scripts": {
+    "start": "webpack-dev-server --env dev",
+    "build": "webpack --env prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaunchMenu/search-based-comparrison.git"
+  },
+  "keywords": [
+    "search",
+    "keyboard-first",
+    "application",
+    "launch",
+    "menu",
+    "launchmenu",
+    "ulauncher",
+    "ueli",
+    "cerebro",
+    "rofi",
+    "alfred",
+    "keypirinha",
+    "wox",
+    "listary",
+    "spotlight",
+    "fluent",
+    "search",
+    "fluentsearch",
+    "bar",
+    "launchbar",
+    "flashlight",
+    "zazu",
+    "hain",
+    "launchy",
+    "arvis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LaunchMenu/search-based-comparrison/issues"
+  },
+  "homepage": "https://github.com/LaunchMenu/search-based-comparrison",
+  "dependencies": {
+    "@emotion/react": "^11.4.0",
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "ts-loader": "^6.0.2",
+    "typescript": "^4.0.2",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.0"
+  }
+}
