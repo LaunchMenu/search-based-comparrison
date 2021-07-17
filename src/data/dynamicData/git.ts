@@ -1,3 +1,14 @@
+//TODO: We cannot change the user-agent as requested in chrome, as chrome will automatically replace it...
+//maybe we can redirect the calls through cors?
+// const fetchOptions = {
+//     method: "GET",
+//     headers: new Headers({
+//         Accept: "application/json",
+//         "Content-Type": "application/json",
+//         "User-Agent": "launchmenu/search-based-comparrison",
+//     }),
+// };
+
 export type IReleaseInfo = {
     tag_name: string;
     name: string;
@@ -17,24 +28,45 @@ export async function gitLatestRelease(repo: string): Promise<IReleaseInfo> {
     let q = `https://api.github.com/repos/${repo}/releases/latest`;
     if (!queryGitCache[q]) {
         let resp = await (await fetch(q)).json();
+        if (resp.documentation_url) {
+            console.error(resp, "Using dummy data");
+            resp = {
+                tag_name: "",
+                name: "Unknown",
+                created_at: "01-01-1900",
+                published_at: "01-01-1900",
+            };
+        }
         queryGitCache[q] = resp;
     }
     if (queryGitCache[q]) {
         return queryGitCache[q];
     } else {
-        throw "An error occurred";
+        throw "An unknown error occurred";
     }
 }
 export async function gitCommits(repo: string): Promise<ICommitInfo[]> {
     let q = `https://api.github.com/repos/${repo}/commits`;
     if (!queryGitCommitCache[q]) {
         let resp = await (await fetch(q)).json();
+        if (resp.documentation_url) {
+            console.error(resp, "Using dummy data");
+            resp = [
+                {
+                    commit: {
+                        committer: {
+                            date: "01-01-1900",
+                        },
+                    },
+                },
+            ];
+        }
         queryGitCommitCache[q] = resp;
     }
-    if (queryGitCache[q]) {
+    if (queryGitCommitCache[q]) {
         return queryGitCommitCache[q];
     } else {
-        throw "An error occurred";
+        throw "An unknown error occurred";
     }
 }
 export async function getGitLastReleaseVersion(repo: string): Promise<string> {

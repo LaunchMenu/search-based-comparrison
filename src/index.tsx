@@ -39,7 +39,7 @@ function getOSIconType(type: string): ReactNode {
     }
 }
 function getPlannedBooleanItemIcon(type: IValue<boolean | "PLANNED">) {
-    console.log(type);
+    // console.log(type);
     switch (type) {
         case true:
             return <CheckIcon key="true" />;
