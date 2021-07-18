@@ -69,18 +69,20 @@ export async function gitCommits(repo: string): Promise<ICommitInfo[]> {
         throw "An unknown error occurred";
     }
 }
+
+const devmode: boolean = false;
 export async function getGitLastReleaseVersion(repo: string): Promise<string> {
-    //return "A version";
+    if (devmode) return "A version";
     let e = await gitLatestRelease(repo);
     return `${e.tag_name} ${e.name}`;
 }
 export async function getGitLastReleaseDate(repo: string): Promise<Date> {
-    //return new Date("01-01-1900");
+    if (devmode) return new Date("01-01-1900");
     let e = await gitLatestRelease(repo);
     return new Date(e.published_at);
 }
 export async function getGitLastCommitOn(repo: string): Promise<Date> {
-    //return new Date("01-01-1900");
+    if (devmode) return new Date("01-01-1900");
     let e = await gitCommits(repo);
     return new Date(e[0].commit.committer.date);
 }

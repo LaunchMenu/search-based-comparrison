@@ -3,7 +3,7 @@
  *   N/A     - A feature can't be implemented because a dependency is missing.
  *   TBC     - Feature status is "To be confirmed"
  */
-export type IValue<T> = T | "N/A" | "TBC";
+export type IValue<T> = T | "N/A" | "TBC" | "PREMIUM";
 export type IRawDataItem<T> = IValue<T> | {value: IValue<T>; tooltip: string};
 export type IDataItem<T> =
     | IRawDataItem<T>

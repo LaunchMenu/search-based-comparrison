@@ -2,7 +2,7 @@ import {SvgIcon} from "@material-ui/core";
 import {jsx} from "@emotion/react";
 
 export let LinuxLogo = (props: any) => (
-    <SvgIcon {...props}>
+    <SvgIcon {...props} viewBox="0 0 440 500">
         <g>
             <g>
                 <path

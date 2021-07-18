@@ -14,6 +14,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import EventIcon from "@material-ui/icons/Event";
 import ScheduleIcon from "@material-ui/icons/Schedule";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import {IValue} from "./data/_types/ItemTypes";
 
 function getWebsiteIconType(type: string): ReactNode {
@@ -26,17 +27,47 @@ function getWebsiteIconType(type: string): ReactNode {
             return <LinkIcon />;
     }
 }
-function getOSIconType(type: string): ReactNode {
+function getOSIconType({
+    type,
+    supported,
+}: {
+    type: "mac" | "windows" | "linux";
+    supported: boolean | "PLANNED";
+}): ReactNode {
+    let logo;
     switch (type) {
         case "windows":
-            return <WindowsLogo key={type} />;
+            logo = <WindowsLogo key={type} />;
+            break;
         case "mac":
-            return <AppleIcon key={type} />;
+            logo = <AppleIcon key={type} />;
+            break;
         case "linux":
-            return <LinuxLogo key={type} />;
+            logo = <LinuxLogo key={type} />;
+            break;
         default:
-            return <LinkIcon key={type} />;
+            logo = <LinkIcon key={type} />;
+            break;
     }
+    return (
+        <div css={{position: "relative", display: "inline-block"}} title="Planned">
+            {logo}
+            {supported == "PLANNED" && (
+                <EventIcon
+                    css={{
+                        position: "absolute",
+                        top: 0,
+                        right: 0,
+                        color: "red",
+                        // transform: "scale(50%);translate(50%)",
+                    }}
+                    style={{
+                        fontSize: 10,
+                    }}
+                />
+            )}
+        </div>
+    );
 }
 function getPlannedBooleanItemIcon(type: IValue<boolean | "PLANNED">) {
     // console.log(type);
@@ -46,11 +77,38 @@ function getPlannedBooleanItemIcon(type: IValue<boolean | "PLANNED">) {
         case false:
             return <ClearIcon key="false" />;
         case "N/A":
-            return <ClearIcon key={type} />;
+            return <ClearIcon key={type} css={{color: "grey"}} />;
         case "TBC":
             return <ScheduleIcon key={type} />;
         case "PLANNED":
             return <EventIcon key={type} />;
+        case "PREMIUM":
+            return (
+                <div title="This is a payed for feature">
+                    <AttachMoneyIcon key={type} />
+                </div>
+            );
+        default:
+            return <ScheduleIcon key={type} />;
+    }
+}
+
+function colorBoolean(type: IValue<boolean | "PLANNED">) {
+    switch (type) {
+        case true:
+            return {backgroundColor: "#610161", color: "white"};
+        case false:
+            return {backgroundColor: "#BEB2CB", color: "black"};
+        case "N/A":
+            return {backgroundColor: "#BEB2CB", color: "#BEB2CB"};
+        case "TBC":
+            return {backgroundColor: "#BEB2CB", color: "red"};
+        case "PLANNED":
+            return {backgroundColor: "#BEB2CB", color: "grey"};
+        case "PREMIUM":
+            return {backgroundColor: "#610161", color: "white"};
+        default:
+            return {backgroundColor: "#F00"};
     }
 }
 
@@ -69,14 +127,17 @@ const App: FC = () => {
                 rows={{
                     applicationName: {
                         description: "Description",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
                     operatingSystems: {
                         description: "Operating systems",
                         sort: (a, b) => a.length < b.length,
                         Comp: ({data}) => (
-                            <div>{data.map(e => getOSIconType(e.type))}</div>
+                            <div>
+                                {data.map((e, i) => (
+                                    <span key={i}>{getOSIconType(e)}</span>
+                                ))}
+                            </div>
                         ),
                     },
                     sites: {
@@ -84,8 +145,11 @@ const App: FC = () => {
                         sort: (a, b) => a.length < b.length,
                         Comp: ({data}) => (
                             <div>
-                                {data.map(e => (
-                                    <a key={e.url} href={e.url} css={{marginRight: 10}}>
+                                {data.map((e, i) => (
+                                    <a
+                                        key={e.url}
+                                        href={e.url}
+                                        css={{marginLeft: i == 0 ? 0 : 10}}>
                                         {getWebsiteIconType(e.type)}
                                     </a>
                                 ))}
@@ -94,53 +158,52 @@ const App: FC = () => {
                     },
                     cost: {
                         description: "Pricing",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
                     sourceType: {
                         description: "Source code availability",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
 
                     applicationStatus: {
                         description: "Application status",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
                     lastReleaseVersion: {
                         description: "Last release version",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
                     lastReleaseDate: {
                         description: "Last release date",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => (
                             <div>{data.toLocaleString().split(",")[0]}</div>
                         ),
                     },
                     lastCommit: {
                         description: "Last commit / update",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => (
                             <div>{data.toLocaleString().split(",")[0]}</div>
                         ),
                     },
                     applicationFramework: {
                         description: "Application frameworks",
-                        sort: (a, b) => a < b,
                         Comp: ({data}) => <div>{data}</div>,
                     },
                     executableReleasesProvided: {
                         description: "Application provides executable releases",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
-                    hasExtensions: {
+                    hasPluginSupport: {
                         description: "Application has capability of extensions",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    hasPluginManager: {
+                        description:
+                            "Does the application have a manager to search/install/uninstall plugins",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     pluginFramework: {
                         description: "Extension framework",
@@ -149,54 +212,100 @@ const App: FC = () => {
                     },
                     hasContentPane: {
                         description: "Is a content pane present?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     canHaveFunctionalContent: {
                         description: "Can content be functional?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     recursiveItemFolders: {
                         description: "Can have recursive item folders",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     itemsHaveMultipleActions: {
                         description: "Items can have multiple actions",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     applyActionsAcrossMultipleItems: {
                         description: "Can apply actions across multiple items",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     searchableSubMenusAndContextMenus: {
                         description: "Searchable submenus and context menus",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    pluginsCanCustomiseOtherPluginsItemActions: {
+                        description:
+                            "Can plugins add additional actions to menu items which aren't from the same plugin?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    prioritisedSearchingOnUse: {
+                        description:
+                            "Are menu item's position in the list prioritised based on how often they are used?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     fileSearch: {
                         description: "Is a file search utility present?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     searchFileContents: {
                         description: "Can you search file contents?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     nativeFileSystemIntegration: {
                         description:
                             "Does the app integrate with the native OS's file explorer?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
                     isFileSystemIndexed: {
                         description: "Is the file system indexed?",
-                        sort: (a, b) => a < b,
-                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>, //TODO: Can't use strings here? Although would prefer ticks / crosses / calendars
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    hasFileSystemPatternSearch: {
+                        description: "Can use pattern to search for files",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    hasFileContentPatternSearch: {
+                        description: "Can use pattern to search for file contents",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    hasFileStructures: {
+                        description: "Has multi-file structures",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    webSearch: {
+                        description: "Has WebSearch", //TODO: add tooltip: "Web search allows launching of websites given a query input"
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    webSearchIsCustomisable: {
+                        description: "Is web search customisable?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    webBookmarkSearch: {
+                        description: "Has a bookmarks plugin?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    remarks: {
+                        description: "Remarks",
+                        Comp: ({data}) => <div>{data}</div>,
                     },
                 }}
             />
