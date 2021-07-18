@@ -1,4 +1,4 @@
-import { IDataItem, IOperatingSystem, IPlannableItem, ISite } from "./ItemTypes";
+import { IDataItem, ILanguageCode, IOperatingSystem, IPlannableItem, ISite } from "./ItemTypes";
 export declare type IApplicationInfo = {
     /** The name of the application */
     applicationName: string;
@@ -12,41 +12,89 @@ export declare type IApplicationInfo = {
     /**
      * List of sites of interest. E.G. Main site / Github / ...
      */
-    sites: ISite[];
+    applicationWebSites: ISite[];
     /**
      * Pricing of software
      */
-    cost: IDataItem<string>;
+    applicationCost: IDataItem<string>;
     /**
      * Code source visibility
      */
-    sourceType: IDataItem<"Open Source" | "Closed Source">;
+    applicationSourceType: IDataItem<"Open Source" | "Closed Source">;
     /**
      * Which operating systems the application is compatible with?
      */
-    operatingSystems: IOperatingSystem[];
+    applicationOperatingSystemsSupported: IOperatingSystem[];
     /** Version of last release */
-    lastReleaseVersion: IDataItem<string>;
+    applicationLastReleaseVersion: IDataItem<string>;
     /** Date of last release */
-    lastReleaseDate: IDataItem<Date>;
+    applicationLastReleaseDate: IDataItem<Date>;
     /** Date of last update / commit. Note in some cases this will be the same as the release date and usually just gives an indication of project activity */
-    lastCommit: IDataItem<Date>;
+    applicationLastCommitDate: IDataItem<Date>;
     /** Framework / Language the application is built in */
     applicationFramework: IDataItem<string>;
-    /** Whether executables are provided indicates ease of install */
-    executableReleasesProvided: IPlannableItem<boolean>;
+    /** A rough estimate from typical usage of application */
+    applicationRAMUsage: IDataItem<string | number>;
+    /**
+     *  Whether executables are provided indicates ease of install
+     */
+    uxInstallersProvided: IPlannableItem<boolean>;
+    /**
+     * Does the application have an introductory screen? Introductory screens can help you get started with the application.
+     */
+    uxIntroductionScreen: IPlannableItem<boolean>;
+    /**
+     * A rating of the documentation for users
+     * 1. Documentation doesn't exist
+     * 2. Documentation exists but is either difficult to find or covers very few features.
+     * 3. Documentation exists, is easy to find, adequate feature coverage.
+     * 4. Documentation exists, is easy to find, adequate feature coverage, with good use of key-display, diagrams, screenshots and videos
+     * 5. Documentation exists, is easy to find, total feature coverage, with good use of key-display, diagrams, screenshots and videos
+     */
+    uxUserDocumentationRating: IPlannableItem<1 | 2 | 3 | 4 | 5 | "TBC">;
+    /**
+     * Does the application use a fuzzy searching algorithm to find search results, or does it only search for names that are 100% matches
+     */
+    uxFuzzySearch: IPlannableItem<boolean>;
+    /**
+     * Sometimes it can be difficult to know how a search matched the query you entered. Search
+     * highlights help this usability.
+     */
+    uxSearchHighlights: IPlannableItem<boolean>;
+    /**
+     * Languages indicate that the application can offer the same functionality in other languages, easing use for users of other nationalities.
+     */
+    uxLanguagesSupported: ILanguageCode[];
+    /**
+     * An undo/redo system allows actions to be undoable and redoable. An application which supports this
+     * can allow users to make mistakes, without leaving it up to the user to resolve them.
+     */
+    uxHasUndoRedo: IPlannableItem<boolean>;
     /** Does the software have plugin support */
-    hasPluginSupport: IPlannableItem<boolean>;
+    pluginsAreSupported: IPlannableItem<boolean>;
     /**
      * Does the software have a plugin manager, to install and remove plugins
      */
-    hasPluginManager: IPlannableItem<boolean>;
+    pluginsManagerAvailable: IPlannableItem<boolean>;
     /** What is the plugin system designed in? What will devs use to create applets? E.G. "Electron TypeScript React Emotion" */
-    pluginFramework: IDataItem<string>;
-    /** Does the software have a content / preview pane */
-    hasContentPane: IPlannableItem<boolean>;
-    /** Is it possible to interact with the data/items in the content pane? If not present by default can plugins add this feature easily? */
-    canHaveFunctionalContent: IPlannableItem<boolean>;
+    pluginsFramework: IDataItem<string>;
+    /**
+     * A rating of the documentation for plugin developers
+     * 1. Documentation doesn't exist
+     * 2. Documentation exists but is either difficult to find or covers very few features.
+     * 3. Documentation exists, is easy to find, adequate feature coverage.
+     * 4. Documentation exists, is easy to find, adequate feature coverage, with good use of key-display, diagrams, screenshots and videos
+     * 5. Documentation exists, is easy to find, total feature coverage, with good use of key-display, diagrams, screenshots and videos
+     */
+    pluginsDocumentationRating: IPlannableItem<1 | 2 | 3 | 4 | 5 | "TBC">;
+    /**
+     * Does the software have a content / preview pane
+     */
+    contentPaneExists: IPlannableItem<boolean>;
+    /**
+     * Is it possible to interact with the data/items in the content pane? If not present by default can plugins add this feature easily?
+     */
+    contentPaneFunctionalContent: IPlannableItem<boolean>;
     /**
      * Can menu items contain recursive folders / submenus?
      *   I.E. Can you have an item which has children, which can also have children, which can also have children ...
@@ -77,13 +125,36 @@ export declare type IApplicationInfo = {
      */
     prioritisedSearchingOnUse: IPlannableItem<boolean>;
     /**
+     * Does the application use the ability to insert text directly into the caret location.
+     *   * In launchmenu we do this by copying some text to the clipboard and inserting it directly.
+     *   * Other systems may use accessibility or other means to insert text into the top application
+     */
+    hasTextInsertion: IPlannableItem<boolean>;
+    /**
+     * Does the application have the capability to "instant send". This feature takes the currently selected item/text in another
+     * application and performs a search / action search based on the selected item.
+     */
+    hasInstantSend: IPlannableItem<boolean>;
+    /**
+     * Key combination which shows mnemonics above UI elements for quick access.
+     */
+    hasInAppMnemonics: IPlannableItem<boolean>;
+    /**
+     * Key combination which shows mnemonics above UI elements of the active window for quick access.
+     */
+    hasGlobalMnemonics: IPlannableItem<boolean>;
+    /**
+     * Provides the previously active window info for extra context for plugins/applets etc.
+     */
+    hasSearchesOnActiveWindowContext: IPlannableItem<boolean>;
+    /**
      * Does a system exist to search for files based on their name/path?
      */
-    fileSearch: IPlannableItem<boolean>;
+    fileSearchExists: IPlannableItem<boolean>;
     /**
      * Does a system exist to search for files based on their contents
      */
-    searchFileContents: IPlannableItem<boolean>;
+    fileSearchCanSearchFileContents: IPlannableItem<boolean>;
     /**
      * Does the application integrate with existing File System explorers on the OS
      * e.g. Explorer.exe / Finder.app
@@ -93,47 +164,66 @@ export declare type IApplicationInfo = {
      *   * ...
      * Typically these are advanced features
      */
-    nativeFileSystemIntegration: IPlannableItem<boolean>;
+    fileSearchIntegratesWithNativeFileSystem: IPlannableItem<boolean>;
     /**
      * Is the file system search mechanism indexed?
      * If the system isn't then it will have to search through all files on the disk to find the item in question which can be slow.
      * Indexed file systems are typically faster, but much more complicated
      */
-    isFileSystemIndexed: IPlannableItem<boolean>;
+    fileSearchIsIndexed: IPlannableItem<boolean>;
     /**
      * File system regex search allows users to search their file system for files with names/paths matching a regex expression.
-     * @new
      */
-    hasFileSystemPatternSearch: IPlannableItem<boolean>;
+    fileSearchHasPatternSearch: IPlannableItem<boolean>;
     /**
      * File content regex search allows users to search their file system for files with content which matches a regex expression.
-     * @new
      */
-    hasFileContentPatternSearch: IPlannableItem<boolean>;
+    fileSearchHasContentPatternSearch: IPlannableItem<boolean>;
     /**
      * File structures are implementable systems such that multiple files can be represented as a single menu item. E.G. Some file types such as Shape files:
      *   some/file.shp
      *   some/file.dbf
      * The hope is that this can be seen as a single menu item in the search software (given the correct plugin is installed), rather than as 2 files
-     * @new
      */
-    hasFileStructures: IPlannableItem<boolean>;
+    fileSearchHasFileStructures: IPlannableItem<boolean>;
+    /**
+     * Are the roots in which the file system searches configurable?
+     */
+    fileSearchHasConfigurableRoots: IPlannableItem<boolean>;
     /**
      * Web search allows launching of websites given a query input. I.E
      *   `Google my query` ==> Open http://google.com?q=my%20query in default browser
-     * @new
      */
     webSearch: IPlannableItem<boolean>;
     /**
      * A customisable web search is one which allows users to use custom URLs.
-     * @new
      */
     webSearchIsCustomisable: IPlannableItem<boolean>;
     /**
      * Web bookmark search, searches the bookmarks for the browsers installed on the system. Bookmarks are then launchable from the application.
-     * @new
      */
     webBookmarkSearch: IPlannableItem<boolean>;
+    /**
+     * What's the style of the configuration management within the application?
+     * * N/A - No application configuration
+     * * TBC - To be confirmed
+     * * Text-Based - Changing settings involves changing text in a config file
+     * * Menu-Based - Changing settings involves reusing the same system the search system already uses.
+     * * GUI-based - Changing settings launches a seperate GUI users can use to modify settings.
+     */
+    settingsStyle: "N/A" | "TBC" | "Text-Based" | "Menu-Based" | "GUI-Based";
+    /**
+     * Can you import and export the settings?
+     */
+    settingsArePortable: IPlannableItem<boolean>;
+    /**
+     * Can themes change the colors of the application?
+     */
+    themesCanChangeColors: IPlannableItem<boolean>;
+    /**
+     * Can themes change the layout of the application?
+     */
+    themesCanChangeLayout: IPlannableItem<boolean>;
     /**
      * Any outstanding remarks
      */

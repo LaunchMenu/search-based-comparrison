@@ -22,8 +22,8 @@ export type ICommitInfo = {
         };
     };
 };
-const queryGitCache: {[key: string]: IReleaseInfo} = {};
-const queryGitCommitCache: {[key: string]: ICommitInfo[]} = {};
+const queryGitCache: { [key: string]: IReleaseInfo } = {};
+const queryGitCommitCache: { [key: string]: ICommitInfo[] } = {};
 export async function gitLatestRelease(repo: string): Promise<IReleaseInfo> {
     let q = `https://api.github.com/repos/${repo}/releases/latest`;
     if (!queryGitCache[q]) {
