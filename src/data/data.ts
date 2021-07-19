@@ -860,12 +860,15 @@ export let data: IApplicationInfo[] = [
         applicationFramework: "C#-SkiaSharp",
         applicationRAMUsage: "125MB", //Amazingly small, most of it's indexing is on-disk in BLAST\FluentSearch.db
         uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
+        uxIntroductionScreen: {
+            value: false,
+            tooltip: "Has a screen at the beginning, but no help on this screen.",
+        },
+        uxUserDocumentationRating: 3,
         uxFuzzySearch: false,
         uxSearchHighlights: true,
         uxLanguagesSupported: ["en"],
-        uxHasUndoRedo: "TBC",
+        uxHasUndoRedo: false,
 
         pluginsAreSupported: true,
         pluginsManagerAvailable: true, //a little difficult to spot this
