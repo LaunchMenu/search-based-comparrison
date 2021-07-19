@@ -3,37 +3,45 @@ import {
     getGitLastReleaseDate,
     getGitLastReleaseVersion,
 } from "./dynamicData/git";
-import { IApplicationInfo } from "./_types/IApplicationInfo";
+import {IApplicationInfo} from "./_types/IApplicationInfo";
 
 export let data: IApplicationInfo[] = [
     {
         applicationName: "LaunchMenu",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://launchmenu.github.io/" },
-            { type: "github", url: "https://github.com/launchmenu/launchmenu" },
+            {type: "main", url: "https://launchmenu.github.io/"},
+            {type: "github", url: "https://github.com/launchmenu/launchmenu"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: "PLANNED" },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: "PLANNED"},
         ],
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("launchmenu/launchmenu"),
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("launchmenu/launchmenu"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("launchmenu/launchmenu"),
         applicationLastCommitDate: () => getGitLastCommitOn("launchmenu/launchmenu"),
         applicationFramework: "Electron TypeScript React",
-        applicationRAMUsage: { value: "50MB-100MB", tooltip: "Important to note that LM currently doesn't have a FileSystem which will likely alter this value" },
+        applicationRAMUsage: {
+            value: "50MB-100MB",
+            tooltip:
+                "Important to note that LM currently doesn't have a FileSystem which will likely alter this value",
+        },
 
         //Usability
         uxInstallersProvided: true,
         uxIntroductionScreen: true,
-        uxUserDocumentationRating: 4,
-        uxFuzzySearch: "TBC",
+        uxUserDocumentationRating: {
+            value: 4,
+            tooltip: "The home page gives a great overview of most LM features",
+        },
+        uxFuzzySearch: true,
         uxSearchHighlights: true,
         uxLanguagesSupported: ["en"],
-        uxHasUndoRedo: { value: "PLANNED", tooltip: "System exists, no UI." },
+        uxHasUndoRedo: {value: "PLANNED", tooltip: "System exists, no UI."},
 
         //Plugin system
         pluginsAreSupported: true,
@@ -57,11 +65,14 @@ export let data: IApplicationInfo[] = [
         searchableSubMenusAndContextMenus: true,
 
         prioritisedSearchingOnUse: "PLANNED",
-        hasTextInsertion: { value: true, tooltip: "Currently using copy-exit-paste handler" },
+        hasTextInsertion: {
+            value: true,
+            tooltip: "Currently using copy-exit-paste handler",
+        },
         hasInstantSend: "PLANNED",
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
+        hasInAppMnemonics: "PLANNED",
+        hasGlobalMnemonics: "PLANNED",
+        hasSearchesOnActiveWindowContext: "PLANNED",
 
         //FILE SEARCH
         fileSearchExists: "PLANNED",
@@ -82,30 +93,127 @@ export let data: IApplicationInfo[] = [
 
         //SETTINGS
         settingsStyle: "Menu-Based",
-        settingsArePortable: { value: "PLANNED", tooltip: "You can manually copy the settings folder, but currently no UI available for this." },
+        settingsArePortable: {
+            value: "PLANNED",
+            tooltip:
+                "You can manually copy the settings folder, but currently no UI available for this.",
+        },
 
         //THEMES
-        themesCanChangeColors: { value: "PLANNED", tooltip: "System exists, no UI yet." },
-        themesCanChangeLayout: { value: false, tooltip: "Can be accomplished via applets which replace SessionManager" },
+        themesCanChangeColors: {value: "PLANNED", tooltip: "System exists, no UI yet."},
+        themesCanChangeLayout: {
+            value: false,
+            tooltip: "Can be accomplished via applets which replace SessionManager",
+        },
 
         //Final remarks
         remarks: "",
     },
     {
-        applicationName: "Ulauncher",
+        applicationName: "cerebro",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://ulauncher.io/" },
-            { type: "github", url: "https://github.com/Ulauncher/Ulauncher/" },
+            {type: "main", url: "https://cerebroapp.com/"},
+            {type: "github", url: "https://github.com/cerebroapp/cerebro"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "linux", supported: true }],
+        applicationOperatingSystemsSupported: [
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
+        ],
         remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("Ulauncher/Ulauncher"),
-        applicationLastReleaseDate: () => getGitLastReleaseDate("Ulauncher/Ulauncher"),
-        applicationLastCommitDate: () => getGitLastCommitOn("Ulauncher/Ulauncher"),
-        applicationFramework: "Python GTK Webkit",
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("cerebroapp/cerebro"),
+        applicationLastReleaseDate: async () => {
+            return {
+                value: await getGitLastReleaseDate("cerebroapp/cerebro"),
+                tooltip: "Was discontinued in 2017. Recently been revived in 2021",
+            };
+        },
+        applicationLastCommitDate: () => getGitLastCommitOn("cerebroapp/cerebro"),
+        applicationFramework: "Electron JavaScript React",
+        applicationRAMUsage: "300MB",
+        uxInstallersProvided: true,
+        uxIntroductionScreen: false,
+        uxUserDocumentationRating: 1,
+        uxFuzzySearch: true,
+        uxSearchHighlights: false,
+        uxLanguagesSupported: ["en"],
+        uxHasUndoRedo: false,
+
+        pluginsAreSupported: true,
+        pluginsManagerAvailable: {value: true, tooltip: "Not working on 17 Jul 2021"},
+        pluginsFramework: "JavaScript",
+        pluginsDocumentationRating: 3,
+
+        contentPaneExists: true,
+        contentPaneFunctionalContent: true,
+        recursiveItemFolders: {
+            value: false,
+            tooltip:
+                "Only 1 level of recursion exists in cerebro. You can step into an item which allows it to display in the preview pane, however you cannot step in infinitely.",
+        },
+        itemsHaveMultipleActions: true,
+        applyActionsAcrossMultipleItems: false,
+        searchableSubMenusAndContextMenus: false,
+        pluginsCanCustomiseOtherPluginsItemActions: false,
+        prioritisedSearchingOnUse: false,
+        hasTextInsertion: false,
+        hasInstantSend: false,
+        hasInAppMnemonics: false,
+        hasGlobalMnemonics: false,
+        hasSearchesOnActiveWindowContext: false,
+
+        fileSearchExists: {value: true, tooltip: "Non-default plugin"},
+        fileSearchCanSearchFileContents: false,
+        fileSearchIntegratesWithNativeFileSystem: false,
+        fileSearchIsIndexed: false,
+        fileSearchHasPatternSearch: true,
+        fileSearchHasContentPatternSearch: false,
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: false,
+
+        webSearch: {
+            value: false,
+            tooltip:
+                "There exists an applet named \"web search\" however I couldn't install or test it to guarantee it's the same thing.",
+        },
+        webSearchIsCustomisable: "N/A",
+        webBookmarkSearch: false,
+
+        //SETTINGS
+        settingsStyle: "Menu-Based",
+        settingsArePortable: false,
+
+        //THEMES
+        themesCanChangeColors: {
+            value: false,
+            tooltip: "Does at least provide a dark/light theme",
+        },
+        themesCanChangeLayout: false,
+    },
+    {
+        applicationName: "Zazu",
+        applicationStatus: "Discontinued",
+        applicationWebSites: [
+            {type: "main", url: "http://zazuapp.org/"},
+            {type: "github", url: "https://github.com/bayleeadamoss/zazu"},
+        ],
+        applicationCost: "Free",
+        applicationSourceType: "Open Source",
+        applicationOperatingSystemsSupported: [
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
+        ],
+        remarks: "",
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("bayleeadamoss/zazu"),
+        applicationLastReleaseDate: () => getGitLastReleaseDate("bayleeadamoss/zazu"),
+        applicationLastCommitDate: () => getGitLastCommitOn("bayleeadamoss/zazu"),
+        applicationFramework: "Electron",
         applicationRAMUsage: "TBC",
         uxInstallersProvided: true,
         uxIntroductionScreen: "TBC",
@@ -115,27 +223,98 @@ export let data: IApplicationInfo[] = [
         uxLanguagesSupported: [],
         uxHasUndoRedo: "TBC",
 
-
         pluginsAreSupported: true,
-        pluginsManagerAvailable: {
-            value: false,
-            tooltip:
-                "No plugin manager, ULauncher runs all extensions from `~/.local/share/ulauncher/extensions/`",
-        },
-        pluginsFramework: "Python 3",
+        pluginsManagerAvailable: true,
+        pluginsFramework: "JavaScript",
         pluginsDocumentationRating: "TBC",
 
-        //TODO: Plugins cannot change the look/behavior of the application
+        contentPaneExists: true,
+        contentPaneFunctionalContent: false,
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: false,
+        applyActionsAcrossMultipleItems: false,
+        searchableSubMenusAndContextMenus: false,
+        pluginsCanCustomiseOtherPluginsItemActions: false,
+        prioritisedSearchingOnUse: false,
+        hasTextInsertion: "TBC",
+        hasInstantSend: "TBC",
+        hasInAppMnemonics: "TBC",
+        hasGlobalMnemonics: "TBC",
+        hasSearchesOnActiveWindowContext: "TBC",
+
+        fileSearchExists: {value: true, tooltip: "No folders"},
+        fileSearchCanSearchFileContents: false,
+        fileSearchIntegratesWithNativeFileSystem: false,
+        fileSearchIsIndexed: {
+            value: true,
+            tooltip: "Appears to be O(n) as it's just a virtual cache",
+        },
+        fileSearchHasPatternSearch: false,
+        fileSearchHasContentPatternSearch: false,
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: "TBC",
+
+        webSearch: true,
+        webSearchIsCustomisable: false,
+        webBookmarkSearch: true,
+
+        //SETTINGS
+        settingsStyle: "TBC",
+        settingsArePortable: "TBC",
+
+        //THEMES
+        themesCanChangeColors: "TBC",
+        themesCanChangeLayout: "TBC",
+    },
+
+    {
+        applicationName: "Launchy",
+        applicationStatus: "Discontinued",
+        applicationWebSites: [{type: "main", url: "http://www.launchy.net/"}],
+        applicationCost: "Free",
+        applicationSourceType: "Open Source",
+        applicationOperatingSystemsSupported: [
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
+        ],
+        remarks:
+            "Launchy has crashed a few times on me in short use of the software. Additionally file search is laggy.",
+        applicationLastReleaseVersion: {
+            value: "2.6 Beta 2",
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastReleaseDate: {
+            value: new Date("25-Aug-10"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastCommitDate: {
+            value: new Date("25-Aug-10"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationFramework: "C++ (Qt)",
+        applicationRAMUsage: "TBC",
+        uxInstallersProvided: true,
+        uxIntroductionScreen: "TBC",
+        uxUserDocumentationRating: "TBC",
+        uxFuzzySearch: "TBC",
+        uxSearchHighlights: "TBC",
+        uxLanguagesSupported: [],
+        uxHasUndoRedo: "TBC",
+
+        pluginsAreSupported: true,
+        pluginsManagerAvailable: true,
+        pluginsFramework: "C",
+        pluginsDocumentationRating: "TBC",
+
         contentPaneExists: false,
         contentPaneFunctionalContent: "N/A",
-
-
-        recursiveItemFolders: true,
-        itemsHaveMultipleActions: true,
-        applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: true,
-        pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: "TBC",
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: false,
+        applyActionsAcrossMultipleItems: "N/A",
+        searchableSubMenusAndContextMenus: "N/A",
+        pluginsCanCustomiseOtherPluginsItemActions: "N/A",
+        prioritisedSearchingOnUse: false,
         hasTextInsertion: "TBC",
         hasInstantSend: "TBC",
         hasInAppMnemonics: "TBC",
@@ -143,16 +322,88 @@ export let data: IApplicationInfo[] = [
         hasSearchesOnActiveWindowContext: "TBC",
 
         fileSearchExists: true,
-        fileSearchCanSearchFileContents: { value: true, tooltip: "deep file search plugin" },
+        fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: false,
+        fileSearchIsIndexed: false, //Doesn't feel like it at least
         fileSearchHasPatternSearch: false,
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: "TBC",
 
-        webSearch: false,
-        webSearchIsCustomisable: false,
+        webSearch: true,
+        webSearchIsCustomisable: true,
+        webBookmarkSearch: true,
+
+        //SETTINGS
+        settingsStyle: "TBC",
+        settingsArePortable: "TBC",
+
+        //THEMES
+        themesCanChangeColors: "TBC",
+        themesCanChangeLayout: "TBC",
+    },
+    {
+        applicationName: "Arvis",
+        applicationStatus: "Active",
+        applicationWebSites: [
+            {type: "github", url: "https://github.com/jopemachine/arvis"},
+        ],
+        applicationCost: "Free",
+        applicationSourceType: "Open Source",
+        applicationOperatingSystemsSupported: [
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
+        ],
+        remarks: "",
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("jopemachine/arvis"),
+        applicationLastReleaseDate: () => getGitLastReleaseDate("jopemachine/arvis"),
+        applicationLastCommitDate: () => getGitLastCommitOn("jopemachine/arvis"),
+        applicationFramework: "Electron TypeScript React",
+        applicationRAMUsage: "TBC",
+        uxInstallersProvided: true,
+        uxIntroductionScreen: "TBC",
+        uxUserDocumentationRating: "TBC",
+        uxFuzzySearch: "TBC",
+        uxSearchHighlights: "TBC",
+        uxLanguagesSupported: [],
+        uxHasUndoRedo: "TBC",
+
+        pluginsAreSupported: true,
+        pluginsManagerAvailable: true,
+        pluginsFramework: "TypeScript",
+        pluginsDocumentationRating: "TBC",
+
+        contentPaneExists: false,
+        contentPaneFunctionalContent: "N/A",
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: false,
+        applyActionsAcrossMultipleItems: false,
+        searchableSubMenusAndContextMenus: false,
+        pluginsCanCustomiseOtherPluginsItemActions: false,
+        prioritisedSearchingOnUse: false,
+        hasTextInsertion: "TBC",
+        hasInstantSend: "TBC",
+        hasInAppMnemonics: "TBC",
+        hasGlobalMnemonics: "TBC",
+        hasSearchesOnActiveWindowContext: "TBC",
+
+        //https://github.com/jopemachine/arvis-filesearch-plugin
+        fileSearchExists: true,
+        fileSearchCanSearchFileContents: false,
+        fileSearchIntegratesWithNativeFileSystem: false,
+        fileSearchIsIndexed: false, //appears to use https://github.com/mrmlnc/fast-glob which doesn't appear to use an index?
+        fileSearchHasPatternSearch: {value: true, tooltip: "Does have glob patterns"},
+        fileSearchHasContentPatternSearch: false,
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: "TBC",
+
+        //https://github.com/jopemachine/arvis-simple-websearch-plugin
+        webSearch: true,
+        webSearchIsCustomisable: true,
+
+        //https://github.com/jopemachine/arvis-chrome-bookmark-plugin
         webBookmarkSearch: true,
 
         //SETTINGS
@@ -167,28 +418,40 @@ export let data: IApplicationInfo[] = [
         applicationName: "ueli",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://ueli.app" },
-            { type: "github", url: "https://github.com/oliverschwendener/ueli" },
+            {type: "main", url: "https://ueli.app"},
+            {type: "github", url: "https://github.com/oliverschwendener/ueli"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
         ],
         remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("oliverschwendener/ueli"),
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("oliverschwendener/ueli"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("oliverschwendener/ueli"),
         applicationLastCommitDate: () => getGitLastCommitOn("oliverschwendener/ueli"),
         applicationFramework: "Electron TypeScript Vue",
-        applicationRAMUsage: "TBC",
+        applicationRAMUsage: "240MB",
         uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
+        uxIntroductionScreen: false,
+        uxUserDocumentationRating: 2,
+        uxFuzzySearch: true,
+        uxSearchHighlights: false,
+        uxLanguagesSupported: [
+            "en",
+            "de",
+            "cs",
+            "es",
+            "ja",
+            "ko",
+            "pt",
+            "ru",
+            "tr",
+            "zh",
+        ],
+        uxHasUndoRedo: false,
 
         pluginsAreSupported: false,
         pluginsManagerAvailable: {
@@ -196,7 +459,7 @@ export let data: IApplicationInfo[] = [
             tooltip: "Can disable plugins, cannot install new plugins",
         },
         pluginsFramework: "N/A",
-        pluginsDocumentationRating: "TBC",
+        pluginsDocumentationRating: "N/A",
 
         contentPaneExists: false,
         contentPaneFunctionalContent: "N/A",
@@ -209,6 +472,73 @@ export let data: IApplicationInfo[] = [
             value: true,
             tooltip: "Only seems to work for some plugins.",
         },
+        hasTextInsertion: false,
+        hasInstantSend: false,
+        hasInAppMnemonics: false,
+        hasGlobalMnemonics: false,
+        hasSearchesOnActiveWindowContext: false,
+
+        fileSearchExists: true,
+        fileSearchCanSearchFileContents: false,
+        fileSearchIntegratesWithNativeFileSystem: false,
+        fileSearchIsIndexed: true,
+        fileSearchHasPatternSearch: false,
+        fileSearchHasContentPatternSearch: false,
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: true,
+
+        webSearch: true,
+        webSearchIsCustomisable: true,
+        webBookmarkSearch: true,
+
+        //SETTINGS
+        settingsStyle: "GUI-Based",
+        settingsArePortable: true,
+
+        //THEMES
+        themesCanChangeColors: true,
+        themesCanChangeLayout: false,
+    },
+    {
+        applicationName: "Hain",
+        applicationStatus: "Discontinued",
+        applicationWebSites: [
+            {type: "main", url: "https://hainproject.github.io/hain/"},
+            {type: "github", url: "https://github.com/hainproject/hain"},
+        ],
+        applicationCost: "Free",
+        applicationSourceType: "Open Source",
+        applicationOperatingSystemsSupported: [
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+        ],
+        remarks: "",
+        applicationLastReleaseVersion: () => getGitLastReleaseVersion("hainproject/hain"),
+        applicationLastReleaseDate: () => getGitLastReleaseDate("hainproject/hain"),
+        applicationLastCommitDate: () => getGitLastCommitOn("hainproject/hain"),
+        applicationFramework: "Electron",
+        applicationRAMUsage: "TBC",
+        uxInstallersProvided: true,
+        uxIntroductionScreen: "TBC",
+        uxUserDocumentationRating: "TBC",
+        uxFuzzySearch: "TBC",
+        uxSearchHighlights: "TBC",
+        uxLanguagesSupported: [],
+        uxHasUndoRedo: "TBC",
+
+        pluginsAreSupported: true,
+        pluginsManagerAvailable: true,
+        pluginsFramework: "Javascript",
+        pluginsDocumentationRating: "TBC",
+
+        contentPaneExists: true,
+        contentPaneFunctionalContent: false,
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: false,
+        applyActionsAcrossMultipleItems: false,
+        searchableSubMenusAndContextMenus: false,
+        pluginsCanCustomiseOtherPluginsItemActions: false,
+        prioritisedSearchingOnUse: true,
         hasTextInsertion: "TBC",
         hasInstantSend: "TBC",
         hasInAppMnemonics: "TBC",
@@ -224,165 +554,10 @@ export let data: IApplicationInfo[] = [
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: "TBC",
 
-
-        webSearch: true,
-        webSearchIsCustomisable: true,
-        webBookmarkSearch: true,
-
-
-        //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
-
-        //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
-
-
-    },
-    {
-        applicationName: "cerebro",
-        applicationStatus: "Active",
-        applicationWebSites: [
-            { type: "main", url: "https://cerebroapp.com/" },
-            { type: "github", url: "https://github.com/cerebroapp/cerebro" },
-        ],
-        applicationCost: "Free",
-        applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
-        ],
-        remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("cerebroapp/cerebro"),
-        applicationLastReleaseDate: async () => {
-            return {
-                value: await getGitLastReleaseDate("cerebroapp/cerebro"),
-                tooltip: "Was discontinued in 2017. Recently been revived in 2021",
-            };
-        },
-        applicationLastCommitDate: () => getGitLastCommitOn("cerebroapp/cerebro"),
-        applicationFramework: "Electron JavaScript React",
-        applicationRAMUsage: "TBC",
-        uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
-
-        pluginsAreSupported: true,
-        pluginsManagerAvailable: { value: true, tooltip: "Not working on 17 Jul 2021" },
-        pluginsFramework: "JavaScript",
-        pluginsDocumentationRating: "TBC",
-
-        contentPaneExists: true,
-        contentPaneFunctionalContent: true,
-        recursiveItemFolders: {
-            value: false,
-            tooltip:
-                "Only 1 level of recursion exists in cerebro. You can step into an item which allows it to display in the preview pane, however you cannot step in infinitely.",
-        },
-        itemsHaveMultipleActions: true,
-        applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: false,
-        pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: false,
-        hasTextInsertion: "TBC",
-        hasInstantSend: "TBC",
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
-
-        fileSearchExists: { value: true, tooltip: "Non-default plugin" },
-        fileSearchCanSearchFileContents: false,
-        fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: false,
-        fileSearchHasPatternSearch: true,
-        fileSearchHasContentPatternSearch: false,
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
-
-
-        webSearch: {
-            value: false,
-            tooltip:
-                "There exists an applet named \"web search\" however I couldn't install or test it to guarantee it's the same thing.",
-        },
-        webSearchIsCustomisable: "N/A",
-        webBookmarkSearch: false,
-
-
-        //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
-
-        //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
-
-
-    },
-    {
-        applicationName: "Rofi",
-        applicationStatus: "Active",
-        applicationWebSites: [{ type: "github", url: "https://github.com/davatorium/rofi" }],
-        applicationCost: "Free",
-        applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "linux", supported: true }],
-        remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("davatorium/rofi"),
-        applicationLastReleaseDate: () => getGitLastReleaseDate("davatorium/rofi"),
-        applicationLastCommitDate: () => getGitLastCommitOn("davatorium/rofi"),
-        applicationFramework: "C",
-        applicationRAMUsage: "TBC",
-        uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
-
-        pluginsAreSupported: true,
-        pluginsManagerAvailable: "TBC",
-        pluginsFramework: "C",
-        pluginsDocumentationRating: "TBC",
-
-        contentPaneExists: false,
-        contentPaneFunctionalContent: "N/A",
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: false,
-        applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: "N/A",
-        pluginsCanCustomiseOtherPluginsItemActions: "TBC",
-        prioritisedSearchingOnUse: "TBC",
-        hasTextInsertion: "TBC",
-        hasInstantSend: "TBC",
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
-
-        fileSearchExists: true, //https://github.com/csantosb/myscripts/blob/master/search-recoll-dmenu.sh
-        fileSearchCanSearchFileContents: false,
-        fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: false, //grep does not create an index
-        fileSearchHasPatternSearch: {
-            value: false,
-            tooltip: "Uses grep so has pattern recognition",
-        },
-        fileSearchHasContentPatternSearch: false,
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
-
-
         webSearch: false,
         webSearchIsCustomisable: "N/A",
         webBookmarkSearch: true,
 
-
         //SETTINGS
         settingsStyle: "TBC",
         settingsArePortable: "TBC",
@@ -390,111 +565,23 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
-
-
-    },
-    {
-        applicationName: "Alfred",
-        applicationStatus: "Active",
-        applicationWebSites: [{ type: "main", url: "https://alfredapp.com/" }],
-        applicationCost: "Free/£29/£49",
-        applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
-        remarks: "",
-        applicationLastReleaseVersion: {
-            value: "4.5 Prerelease B1245",
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastReleaseDate: {
-            value: new Date("15-Jul-21"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastCommitDate: {
-            value: new Date("15-Jul-21"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationFramework: "Unknown",
-        applicationRAMUsage: { value: "100MB", tooltip: "Alfred app is 18-20MB, but important to note Alfred requires Spotlight, which typically consumes around 80MB RAM. For a total of 100MB RAM" },
-        uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
-
-        pluginsAreSupported: "PREMIUM",
-        pluginsManagerAvailable: "PREMIUM",
-        pluginsFramework: { value: "AldredWorkflow", tooltip: "Workflows can theoretically run any language" },
-        pluginsDocumentationRating: "TBC",
-
-
-        contentPaneExists: {
-            value: false,
-            tooltip:
-                "Some workflows may launch an additional application which implements a content pane, however Alfred itself does not have one.",
-        },
-        contentPaneFunctionalContent: "N/A",
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: {
-            value: true,
-            tooltip:
-                "Only file items have multiple actions, Normal items only have 1 action",
-        },
-        applyActionsAcrossMultipleItems: { value: "PREMIUM", tooltip: "Alfred has this ability, but it only works on files only (file buffer)." },
-        searchableSubMenusAndContextMenus: false,
-        pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: {
-            value: true,
-            tooltip: "Prioritised search appears to exist only for File items.",
-        },
-        hasTextInsertion: true, //word spreading
-        hasInstantSend: true,
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
-
-        fileSearchExists: true,
-        fileSearchCanSearchFileContents: true,
-        fileSearchIntegratesWithNativeFileSystem: true,
-        fileSearchIsIndexed: true,
-        fileSearchHasPatternSearch: {
-            value: "PREMIUM",
-            tooltip:
-                "You can search for e.g. `*.bmp` but this isn't complete, e.g. `~/*.bmp` and `**/Downloads/*.bmp` don't work at all. You can use workflows to query with regex, but these are a premium feature.",
-        },
-        fileSearchHasContentPatternSearch: {
-            value: "PREMIUM",
-            tooltip: "Can use workflows, a premium feature, to perform this",
-        },
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
-
-
-        webSearch: true,
-        webSearchIsCustomisable: true,
-        webBookmarkSearch: true,
-
-
-        //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
-
-        //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
-
-
     },
     {
         applicationName: "Keypirinha",
         applicationStatus: "Active",
-        applicationWebSites: [{ type: "main", url: "https://keypirinha.com/" }],
+        applicationWebSites: [{type: "main", url: "https://keypirinha.com/"}],
         applicationCost: "Free",
-        applicationSourceType: { value: "Closed Source", tooltip: "Awaiting clarification" },
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
-        remarks: "Duplicate menu items exist and are common from installing multiple packages. Text based configuration can pose as a steep learning curve to non-technical users",
-        applicationLastReleaseVersion: { value: "2.26", tooltip: "When checking on 15-Jul-2021" },
+        applicationSourceType: {
+            value: "Closed Source",
+            tooltip: "Awaiting clarification",
+        },
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
+        remarks:
+            "Duplicate menu items exist and are common from installing multiple packages. Text based configuration can pose as a steep learning curve to non-technical users",
+        applicationLastReleaseVersion: {
+            value: "2.26",
+            tooltip: "When checking on 15-Jul-2021",
+        },
         applicationLastReleaseDate: {
             value: new Date("08-Nov-20"),
             tooltip: "When checking on 15-Jul-2021",
@@ -517,7 +604,10 @@ export let data: IApplicationInfo[] = [
         pluginsManagerAvailable: false,
         pluginsFramework: "Python",
         pluginsDocumentationRating: 4,
-        pluginsCanCustomiseOtherPluginsItemActions: { value: true, tooltip: "To be confirmed: Should be possible with InstanceID(?)" },
+        pluginsCanCustomiseOtherPluginsItemActions: {
+            value: true,
+            tooltip: "To be confirmed: Should be possible with InstanceID(?)",
+        },
 
         contentPaneExists: false,
         contentPaneFunctionalContent: "N/A",
@@ -536,21 +626,23 @@ export let data: IApplicationInfo[] = [
         fileSearchExists: true,
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: { value: false, tooltip: "Only a guess from what i can tell" },
-        fileSearchHasPatternSearch: { value: true, tooltip: "Regex search exists on everything module, but couldn't understand how to use it" }, //https://github.com/Keypirinha/Packages/blob/d18a84f6c9b2eafa9c414a11cad92a6405e5afc0/Everything/lib/everything_ipc.py#L204
+        fileSearchIsIndexed: {value: false, tooltip: "Only a guess from what i can tell"},
+        fileSearchHasPatternSearch: {
+            value: true,
+            tooltip:
+                "Regex search exists on everything module, but couldn't understand how to use it",
+        }, //https://github.com/Keypirinha/Packages/blob/d18a84f6c9b2eafa9c414a11cad92a6405e5afc0/Everything/lib/everything_ipc.py#L204
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: true,
-
 
         webSearch: true,
         webSearchIsCustomisable: true, //text based configuration.
         webBookmarkSearch: true,
 
-
         //SETTINGS
         settingsStyle: "Text-Based",
-        settingsArePortable: { value: false, tooltip: "Theoretically yes, but no UI yet." },
+        settingsArePortable: {value: false, tooltip: "Theoretically yes, but no UI yet."},
 
         //THEMES
         themesCanChangeColors: true,
@@ -560,12 +652,12 @@ export let data: IApplicationInfo[] = [
         applicationName: "Wox",
         applicationStatus: "Passive",
         applicationWebSites: [
-            { type: "main", url: "http://www.wox.one/" },
-            { type: "github", url: "https://github.com/Wox-launcher/Wox" },
+            {type: "main", url: "http://www.wox.one/"},
+            {type: "github", url: "https://github.com/Wox-launcher/Wox"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: () => getGitLastReleaseVersion("Wox-launcher/Wox"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("Wox-launcher/Wox"),
@@ -577,11 +669,31 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: 3,
         uxFuzzySearch: true,
         uxSearchHighlights: true,
-        uxLanguagesSupported: ["en", "zh", "uk", "ru", "fr", "ja", "nl", "pl", "da", "de", "ko", "pt", "it", "no", "sk", "tr", "es", "he", "pt"],
+        uxLanguagesSupported: [
+            "en",
+            "zh",
+            "uk",
+            "ru",
+            "fr",
+            "ja",
+            "nl",
+            "pl",
+            "da",
+            "de",
+            "ko",
+            "pt",
+            "it",
+            "no",
+            "sk",
+            "tr",
+            "es",
+            "he",
+            "pt",
+        ],
         uxHasUndoRedo: false,
 
         pluginsAreSupported: true,
-        pluginsManagerAvailable: true, //Type "wpm" in the search bar 
+        pluginsManagerAvailable: true, //Type "wpm" in the search bar
         pluginsFramework: "C# or Python",
         pluginsDocumentationRating: 3,
 
@@ -592,7 +704,10 @@ export let data: IApplicationInfo[] = [
         applyActionsAcrossMultipleItems: false,
         searchableSubMenusAndContextMenus: true,
         pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: { value: false, tooltip: "Can set queries as topmost which can accomplish the same goal" },
+        prioritisedSearchingOnUse: {
+            value: false,
+            tooltip: "Can set queries as topmost which can accomplish the same goal",
+        },
         hasTextInsertion: false,
         hasInstantSend: false,
         hasInAppMnemonics: false,
@@ -623,12 +738,15 @@ export let data: IApplicationInfo[] = [
     {
         applicationName: "Listary", //open listary with ctrl+ctrl or start typing in windows explorer
         applicationStatus: "Discontinued",
-        applicationWebSites: [{ type: "main", url: "https://www.listary.com/" }],
+        applicationWebSites: [{type: "main", url: "https://www.listary.com/"}],
         applicationCost: "Free/£17.50",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "",
-        applicationLastReleaseVersion: { value: "Listary 6", tooltip: "When checking on 15-Jul-2021" },
+        applicationLastReleaseVersion: {
+            value: "Listary 6",
+            tooltip: "When checking on 15-Jul-2021",
+        },
         applicationLastReleaseDate: {
             value: new Date("14-Oct-18"),
             tooltip: "When checking on 15-Jul-2021",
@@ -638,13 +756,39 @@ export let data: IApplicationInfo[] = [
             tooltip: "When checking on 15-Jul-2021",
         },
         applicationFramework: "C",
-        applicationRAMUsage: { value: "75MB", tooltip: "In theory total usage is around 180MB, given that Listary largely uses Windows Explorer functionality. However Explorer can't be closed anyway, so no matter what application you use you'll always have this overhead (unlike Spotlight on Mac). Therefore listed as 56MB." },
+        applicationRAMUsage: {
+            value: "75MB",
+            tooltip:
+                "In theory total usage is around 180MB, given that Listary largely uses Windows Explorer functionality. However Explorer can't be closed anyway, so no matter what application you use you'll always have this overhead (unlike Spotlight on Mac). Therefore listed as 56MB.",
+        },
         uxInstallersProvided: true,
         uxIntroductionScreen: true, //tutorial on first run
         uxUserDocumentationRating: 2, //tutorial was really all the documentation I noticed
         uxFuzzySearch: false,
         uxSearchHighlights: true,
-        uxLanguagesSupported: ["ar", "cs", "da", "de", "en", "es", "fr", "hu", "id", "it", "ja", "ko", "nl", "pl", "pt", "ro", "ru", "sl", "tr", "uk", "zh"],
+        uxLanguagesSupported: [
+            "ar",
+            "cs",
+            "da",
+            "de",
+            "en",
+            "es",
+            "fr",
+            "hu",
+            "id",
+            "it",
+            "ja",
+            "ko",
+            "nl",
+            "pl",
+            "pt",
+            "ro",
+            "ru",
+            "sl",
+            "tr",
+            "uk",
+            "zh",
+        ],
         uxHasUndoRedo: false,
 
         pluginsAreSupported: false,
@@ -691,94 +835,20 @@ export let data: IApplicationInfo[] = [
         themesCanChangeLayout: false,
     },
     {
-        applicationName: "Spotlight",
-        applicationStatus: "Active",
-        applicationWebSites: [
-            { type: "main", url: "https://en.wikipedia.org/wiki/Spotlight_(software)" },
-        ],
-        applicationCost: "N/A",
-        applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
-        remarks:
-            "Big sur version removes the content pane, and preview becomes the default executable action.",
-        applicationLastReleaseVersion: {
-            value: "Big Sur 11.0",
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastReleaseDate: {
-            value: new Date("22-Jun-20"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastCommitDate: {
-            value: new Date("22-Jun-20"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationFramework: "Unknown",
-        applicationRAMUsage: "80MB",
-        uxInstallersProvided: false,
-        uxIntroductionScreen: false,
-        uxUserDocumentationRating: 2,
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: true,
-        uxLanguagesSupported: ["en"], //Mac OS X languages probably?
-        uxHasUndoRedo: true,
-
-        pluginsAreSupported: false,
-        pluginsManagerAvailable: "N/A",
-        pluginsFramework: "N/A",
-        pluginsDocumentationRating: "N/A",
-
-        contentPaneExists: false,
-        contentPaneFunctionalContent: "N/A",
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: false,
-        applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: "N/A",
-        pluginsCanCustomiseOtherPluginsItemActions: "N/A",
-        prioritisedSearchingOnUse: true, //Spotlight has "top hit" category
-        hasTextInsertion: false,
-        hasInstantSend: false,
-        hasInAppMnemonics: false,
-        hasGlobalMnemonics: false,
-        hasSearchesOnActiveWindowContext: false,
-
-        fileSearchExists: true,
-        fileSearchCanSearchFileContents: true,
-        fileSearchIntegratesWithNativeFileSystem: true,
-        fileSearchIsIndexed: true,
-        fileSearchHasPatternSearch: false,
-        fileSearchHasContentPatternSearch: false,
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: false, //has a blacklist at least
-
-
-        webSearch: true,
-        webSearchIsCustomisable: false,
-        webBookmarkSearch: false,
-
-
-        //SETTINGS
-        settingsStyle: "GUI-Based",
-        settingsArePortable: false,
-
-        //THEMES
-        themesCanChangeColors: false,
-        themesCanChangeLayout: false,
-
-
-    },
-    {
         applicationName: "FluentSearch",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://www.fluentsearch.net/" },
-            { type: "github", url: "https://github.com/adirh3/Fluent-Search" },
+            {type: "main", url: "https://www.fluentsearch.net/"},
+            {type: "github", url: "https://github.com/adirh3/Fluent-Search"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "Found .NET framework while inspecting exe in text file.",
-        applicationLastReleaseVersion: { value: "0.9.86.0", tooltip: "When checking on 15-Jul-2021" },
+        applicationLastReleaseVersion: {
+            value: "0.9.86.0",
+            tooltip: "When checking on 15-Jul-2021",
+        },
         applicationLastReleaseDate: {
             value: new Date("22-Jun-21"),
             tooltip: "When checking on 15-Jul-2021",
@@ -809,11 +879,14 @@ export let data: IApplicationInfo[] = [
         applyActionsAcrossMultipleItems: false,
         searchableSubMenusAndContextMenus: false,
         pluginsCanCustomiseOtherPluginsItemActions: "N/A",
-        prioritisedSearchingOnUse: { value: true, tooltip: "need to enable in the settings" }, //auto-create search mappings
+        prioritisedSearchingOnUse: {
+            value: true,
+            tooltip: "need to enable in the settings",
+        }, //auto-create search mappings
         hasTextInsertion: false,
         hasInstantSend: false,
         hasInAppMnemonics: false,
-        hasGlobalMnemonics: true,               //Ctrl+M
+        hasGlobalMnemonics: true, //Ctrl+M
         hasSearchesOnActiveWindowContext: true, //Prioritization > Prioritize results from focused app
 
         fileSearchExists: true,
@@ -825,31 +898,138 @@ export let data: IApplicationInfo[] = [
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: true,
 
-
         webSearch: true,
         webSearchIsCustomisable: true,
         webBookmarkSearch: false,
-
 
         //SETTINGS
         settingsStyle: "GUI-Based",
         settingsArePortable: "TBC",
 
         //THEMES
-        themesCanChangeColors: { value: false, tooltip: "Only light and dark theme." },
+        themesCanChangeColors: {value: false, tooltip: "Only light and dark theme."},
         themesCanChangeLayout: false,
+    },
+    {
+        applicationName: "Alfred",
+        applicationStatus: "Active",
+        applicationWebSites: [{type: "main", url: "https://alfredapp.com/"}],
+        applicationCost: "Free/£29/£49",
+        applicationSourceType: "Closed Source",
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
+        remarks: "",
+        applicationLastReleaseVersion: {
+            value: "4.5 Prerelease B1245",
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastReleaseDate: {
+            value: new Date("15-Jul-21"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastCommitDate: {
+            value: new Date("15-Jul-21"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationFramework: "Unknown",
+        applicationRAMUsage: {
+            value: "100MB",
+            tooltip:
+                "Alfred app is 18-20MB, but important to note Alfred requires Spotlight, which typically consumes around 80MB RAM. For a total of 100MB RAM",
+        },
+        uxInstallersProvided: true,
+        uxIntroductionScreen: false,
+        uxUserDocumentationRating: {
+            value: 4,
+            tooltip:
+                "If you manage to alfred's guides-and-tutorials section, they have some great documentation, this documentation is hard to find for a beginner though.",
+        }, //https://www.alfredapp.com/blog/tips-and-tricks/beginners-guide-to-alfred-searching-your-mac-and-the-web/
+        uxFuzzySearch: {
+            value: true,
+            tooltip: "Some searches do not have fuzzy search, e.g. file search",
+        },
+        uxSearchHighlights: false,
+        uxLanguagesSupported: ["en"],
+        uxHasUndoRedo: false,
 
+        pluginsAreSupported: "PREMIUM",
+        pluginsManagerAvailable: "PREMIUM",
+        pluginsFramework: {
+            value: "AldredWorkflow",
+            tooltip: "Workflows can theoretically run any language",
+        },
+        pluginsDocumentationRating: 3,
 
+        contentPaneExists: {
+            value: false,
+            tooltip:
+                "Some workflows may launch an additional application which implements a content pane, however Alfred itself does not have one.",
+        },
+        contentPaneFunctionalContent: "N/A",
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: {
+            value: true,
+            tooltip:
+                "Only file items have multiple actions, Normal items only have 1 action",
+        },
+        applyActionsAcrossMultipleItems: {
+            value: "PREMIUM",
+            tooltip:
+                "Alfred has this ability, but it only works on files only (file buffer).",
+        },
+        searchableSubMenusAndContextMenus: false,
+        pluginsCanCustomiseOtherPluginsItemActions: false,
+        prioritisedSearchingOnUse: {
+            value: true,
+            tooltip: "Prioritised search appears to exist only for File items.",
+        },
+        hasTextInsertion: true, //word spreading
+        hasInstantSend: true,
+        hasInAppMnemonics: false,
+        hasGlobalMnemonics: false,
+        hasSearchesOnActiveWindowContext: false,
+
+        fileSearchExists: true,
+        fileSearchCanSearchFileContents: true,
+        fileSearchIntegratesWithNativeFileSystem: true,
+        fileSearchIsIndexed: true,
+        fileSearchHasPatternSearch: {
+            value: "PREMIUM",
+            tooltip:
+                "You can search for e.g. `*.bmp` but this isn't complete, e.g. `~/*.bmp` and `**/Downloads/*.bmp` don't work at all. You can use workflows to query with regex, but these are a premium feature.",
+        },
+        fileSearchHasContentPatternSearch: {
+            value: "PREMIUM",
+            tooltip: "Can use workflows, a premium feature, to perform this",
+        },
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: "TBC",
+
+        webSearch: true,
+        webSearchIsCustomisable: true,
+        webBookmarkSearch: true,
+
+        //SETTINGS
+        settingsStyle: "GUI-Based",
+        settingsArePortable: false,
+
+        //THEMES
+        themesCanChangeColors: true,
+        themesCanChangeLayout: false,
     },
     {
         applicationName: "LaunchBar",
         applicationStatus: "Active",
-        applicationWebSites: [{ type: "main", url: "https://obdev.at/products/launchbar/index.html" }],
+        applicationWebSites: [
+            {type: "main", url: "https://obdev.at/products/launchbar/index.html"},
+        ],
         applicationCost: "£29/£49",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks: "",
-        applicationLastReleaseVersion: { value: "6.14.1", tooltip: "When checking on 15-Jul-2021" },
+        applicationLastReleaseVersion: {
+            value: "6.14.1",
+            tooltip: "When checking on 15-Jul-2021",
+        },
         applicationLastReleaseDate: {
             value: new Date("09-Mar-21"),
             tooltip: "When checking on 15-Jul-2021",
@@ -900,11 +1080,9 @@ export let data: IApplicationInfo[] = [
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: "TBC",
 
-
         webSearch: true,
         webSearchIsCustomisable: true,
         webBookmarkSearch: true,
-
 
         //SETTINGS
         settingsStyle: "TBC",
@@ -913,21 +1091,93 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
+    },
+    {
+        applicationName: "Spotlight",
+        applicationStatus: "Active",
+        applicationWebSites: [
+            {type: "main", url: "https://en.wikipedia.org/wiki/Spotlight_(software)"},
+        ],
+        applicationCost: "N/A",
+        applicationSourceType: "Closed Source",
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
+        remarks:
+            "Big sur version removes the content pane, and preview becomes the default executable action.",
+        applicationLastReleaseVersion: {
+            value: "Big Sur 11.0",
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastReleaseDate: {
+            value: new Date("22-Jun-20"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationLastCommitDate: {
+            value: new Date("22-Jun-20"),
+            tooltip: "When checking on 15-Jul-2021",
+        },
+        applicationFramework: "Unknown",
+        applicationRAMUsage: "80MB",
+        uxInstallersProvided: false,
+        uxIntroductionScreen: false,
+        uxUserDocumentationRating: 2,
+        uxFuzzySearch: false,
+        uxSearchHighlights: false,
+        uxLanguagesSupported: ["en"], //Mac OS X languages probably?
+        uxHasUndoRedo: false,
 
+        pluginsAreSupported: false,
+        pluginsManagerAvailable: "N/A",
+        pluginsFramework: "N/A",
+        pluginsDocumentationRating: "N/A",
 
+        contentPaneExists: false,
+        contentPaneFunctionalContent: "N/A",
+        recursiveItemFolders: false,
+        itemsHaveMultipleActions: false,
+        applyActionsAcrossMultipleItems: false,
+        searchableSubMenusAndContextMenus: "N/A",
+        pluginsCanCustomiseOtherPluginsItemActions: "N/A",
+        prioritisedSearchingOnUse: true, //Spotlight has "top hit" category
+        hasTextInsertion: false,
+        hasInstantSend: false,
+        hasInAppMnemonics: false,
+        hasGlobalMnemonics: false,
+        hasSearchesOnActiveWindowContext: false,
+
+        fileSearchExists: true,
+        fileSearchCanSearchFileContents: true,
+        fileSearchIntegratesWithNativeFileSystem: true,
+        fileSearchIsIndexed: true,
+        fileSearchHasPatternSearch: false,
+        fileSearchHasContentPatternSearch: false,
+        fileSearchHasFileStructures: false,
+        fileSearchHasConfigurableRoots: false, //has a blacklist at least
+
+        webSearch: true,
+        webSearchIsCustomisable: false,
+        webBookmarkSearch: false,
+
+        //SETTINGS
+        settingsStyle: "GUI-Based",
+        settingsArePortable: false,
+
+        //THEMES
+        themesCanChangeColors: false,
+        themesCanChangeLayout: false,
     },
     {
         applicationName: "FlashLight",
         applicationStatus: "Discontinued",
         applicationWebSites: [
-            { type: "main", url: "https://www.macenhance.com/flashlight" },
-            { type: "github", url: "https://github.com/w0lfschild/Flashlight" },
+            {type: "main", url: "https://www.macenhance.com/flashlight"},
+            {type: "github", url: "https://github.com/w0lfschild/Flashlight"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks: "Requires deactivation of System Integrity Protection.",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("w0lfschild/Flashlight"),
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("w0lfschild/Flashlight"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("w0lfschild/Flashlight"),
         applicationLastCommitDate: () => getGitLastCommitOn("w0lfschild/Flashlight"),
         applicationFramework: "ObjectiveC",
@@ -968,12 +1218,10 @@ export let data: IApplicationInfo[] = [
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: false,
 
-
         webSearch: true,
         webSearchIsCustomisable: true,
         webBookmarkSearch: true,
 
-
         //SETTINGS
         settingsStyle: "TBC",
         settingsArePortable: "TBC",
@@ -981,28 +1229,24 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
-
-
     },
     {
-        applicationName: "Zazu",
-        applicationStatus: "Discontinued",
+        applicationName: "Ulauncher",
+        applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "http://zazuapp.org/" },
-            { type: "github", url: "https://github.com/bayleeadamoss/zazu" },
+            {type: "main", url: "https://ulauncher.io/"},
+            {type: "github", url: "https://github.com/Ulauncher/Ulauncher/"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
-        ],
+        applicationOperatingSystemsSupported: [{type: "linux", supported: true}],
         remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("bayleeadamoss/zazu"),
-        applicationLastReleaseDate: () => getGitLastReleaseDate("bayleeadamoss/zazu"),
-        applicationLastCommitDate: () => getGitLastCommitOn("bayleeadamoss/zazu"),
-        applicationFramework: "Electron", applicationRAMUsage: "TBC",
+        applicationLastReleaseVersion: () =>
+            getGitLastReleaseVersion("Ulauncher/Ulauncher"),
+        applicationLastReleaseDate: () => getGitLastReleaseDate("Ulauncher/Ulauncher"),
+        applicationLastCommitDate: () => getGitLastCommitOn("Ulauncher/Ulauncher"),
+        applicationFramework: "Python GTK Webkit",
+        applicationRAMUsage: "TBC",
         uxInstallersProvided: true,
         uxIntroductionScreen: "TBC",
         uxUserDocumentationRating: "TBC",
@@ -1012,91 +1256,24 @@ export let data: IApplicationInfo[] = [
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
-        pluginsManagerAvailable: true,
-        pluginsFramework: "JavaScript",
-        pluginsDocumentationRating: "TBC",
-
-        contentPaneExists: true,
-        contentPaneFunctionalContent: false,
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: false,
-        applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: false,
-        pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: false,
-        hasTextInsertion: "TBC",
-        hasInstantSend: "TBC",
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
-
-        fileSearchExists: { value: true, tooltip: "No folders" },
-        fileSearchCanSearchFileContents: false,
-        fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: {
-            value: true,
-            tooltip: "Appears to be O(n) as it's just a virtual cache",
+        pluginsManagerAvailable: {
+            value: false,
+            tooltip:
+                "No plugin manager, ULauncher runs all extensions from `~/.local/share/ulauncher/extensions/`",
         },
-        fileSearchHasPatternSearch: false,
-        fileSearchHasContentPatternSearch: false,
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
-
-
-        webSearch: true,
-        webSearchIsCustomisable: false,
-        webBookmarkSearch: true,
-
-
-        //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
-
-        //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
-
-
-    },
-    {
-        applicationName: "Hain",
-        applicationStatus: "Discontinued",
-        applicationWebSites: [
-            { type: "main", url: "https://hainproject.github.io/hain/" },
-            { type: "github", url: "https://github.com/hainproject/hain" },
-        ],
-        applicationCost: "Free",
-        applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-        ],
-        remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("hainproject/hain"),
-        applicationLastReleaseDate: () => getGitLastReleaseDate("hainproject/hain"),
-        applicationLastCommitDate: () => getGitLastCommitOn("hainproject/hain"),
-        applicationFramework: "Electron", applicationRAMUsage: "TBC",
-        uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
-
-        pluginsAreSupported: true,
-        pluginsManagerAvailable: true,
-        pluginsFramework: "Javascript",
+        pluginsFramework: "Python 3",
         pluginsDocumentationRating: "TBC",
 
-        contentPaneExists: true,
-        contentPaneFunctionalContent: false,
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: false,
+        //TODO: Plugins cannot change the look/behavior of the application
+        contentPaneExists: false,
+        contentPaneFunctionalContent: "N/A",
+
+        recursiveItemFolders: true,
+        itemsHaveMultipleActions: true,
         applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: false,
+        searchableSubMenusAndContextMenus: true,
         pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: true,
+        prioritisedSearchingOnUse: "TBC",
         hasTextInsertion: "TBC",
         hasInstantSend: "TBC",
         hasInAppMnemonics: "TBC",
@@ -1104,19 +1281,20 @@ export let data: IApplicationInfo[] = [
         hasSearchesOnActiveWindowContext: "TBC",
 
         fileSearchExists: true,
-        fileSearchCanSearchFileContents: false,
+        fileSearchCanSearchFileContents: {
+            value: true,
+            tooltip: "deep file search plugin",
+        },
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: true,
+        fileSearchIsIndexed: false,
         fileSearchHasPatternSearch: false,
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: "TBC",
 
-
         webSearch: false,
-        webSearchIsCustomisable: "N/A",
+        webSearchIsCustomisable: false,
         webBookmarkSearch: true,
-
 
         //SETTINGS
         settingsStyle: "TBC",
@@ -1125,35 +1303,22 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
-
-
     },
     {
-        applicationName: "Launchy",
-        applicationStatus: "Discontinued",
-        applicationWebSites: [{ type: "main", url: "http://www.launchy.net/" }],
+        applicationName: "Rofi",
+        applicationStatus: "Active",
+        applicationWebSites: [
+            {type: "github", url: "https://github.com/davatorium/rofi"},
+        ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
-        ],
-        remarks:
-            "Launchy has crashed a few times on me in short use of the software. Additionally file search is laggy.",
-        applicationLastReleaseVersion: {
-            value: "2.6 Beta 2",
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastReleaseDate: {
-            value: new Date("25-Aug-10"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationLastCommitDate: {
-            value: new Date("25-Aug-10"),
-            tooltip: "When checking on 15-Jul-2021",
-        },
-        applicationFramework: "C++ (Qt)", applicationRAMUsage: "TBC",
+        applicationOperatingSystemsSupported: [{type: "linux", supported: true}],
+        remarks: "",
+        applicationLastReleaseVersion: () => getGitLastReleaseVersion("davatorium/rofi"),
+        applicationLastReleaseDate: () => getGitLastReleaseDate("davatorium/rofi"),
+        applicationLastCommitDate: () => getGitLastCommitOn("davatorium/rofi"),
+        applicationFramework: "C",
+        applicationRAMUsage: "TBC",
         uxInstallersProvided: true,
         uxIntroductionScreen: "TBC",
         uxUserDocumentationRating: "TBC",
@@ -1163,7 +1328,7 @@ export let data: IApplicationInfo[] = [
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
-        pluginsManagerAvailable: true,
+        pluginsManagerAvailable: "TBC",
         pluginsFramework: "C",
         pluginsDocumentationRating: "TBC",
 
@@ -1171,104 +1336,31 @@ export let data: IApplicationInfo[] = [
         contentPaneFunctionalContent: "N/A",
         recursiveItemFolders: false,
         itemsHaveMultipleActions: false,
-        applyActionsAcrossMultipleItems: "N/A",
-        searchableSubMenusAndContextMenus: "N/A",
-        pluginsCanCustomiseOtherPluginsItemActions: "N/A",
-        prioritisedSearchingOnUse: false,
-        hasTextInsertion: "TBC",
-        hasInstantSend: "TBC",
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
-
-        fileSearchExists: true,
-        fileSearchCanSearchFileContents: false,
-        fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: false, //Doesn't feel like it at least
-        fileSearchHasPatternSearch: false,
-        fileSearchHasContentPatternSearch: false,
-        fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
-
-
-        webSearch: true,
-        webSearchIsCustomisable: true,
-        webBookmarkSearch: true,
-
-
-        //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
-
-        //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
-
-
-    },
-    {
-        applicationName: "Arvis",
-        applicationStatus: "Active",
-        applicationWebSites: [{ type: "github", url: "https://github.com/jopemachine/arvis" }],
-        applicationCost: "Free",
-        applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
-        ],
-        remarks: "",
-        applicationLastReleaseVersion: () => getGitLastReleaseVersion("jopemachine/arvis"),
-        applicationLastReleaseDate: () => getGitLastReleaseDate("jopemachine/arvis"),
-        applicationLastCommitDate: () => getGitLastCommitOn("jopemachine/arvis"),
-        applicationFramework: "Electron TypeScript React", applicationRAMUsage: "TBC",
-        uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
-        uxHasUndoRedo: "TBC",
-
-        pluginsAreSupported: true,
-        pluginsManagerAvailable: true,
-        pluginsFramework: "TypeScript",
-        pluginsDocumentationRating: "TBC",
-
-        contentPaneExists: false,
-        contentPaneFunctionalContent: "N/A",
-        recursiveItemFolders: false,
-        itemsHaveMultipleActions: false,
         applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: false,
-        pluginsCanCustomiseOtherPluginsItemActions: false,
-        prioritisedSearchingOnUse: false,
+        searchableSubMenusAndContextMenus: "N/A",
+        pluginsCanCustomiseOtherPluginsItemActions: "TBC",
+        prioritisedSearchingOnUse: "TBC",
         hasTextInsertion: "TBC",
         hasInstantSend: "TBC",
         hasInAppMnemonics: "TBC",
         hasGlobalMnemonics: "TBC",
         hasSearchesOnActiveWindowContext: "TBC",
 
-
-        //https://github.com/jopemachine/arvis-filesearch-plugin
-        fileSearchExists: true,
+        fileSearchExists: true, //https://github.com/csantosb/myscripts/blob/master/search-recoll-dmenu.sh
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: false, //appears to use https://github.com/mrmlnc/fast-glob which doesn't appear to use an index?
-        fileSearchHasPatternSearch: { value: true, tooltip: "Does have glob patterns" },
+        fileSearchIsIndexed: false, //grep does not create an index
+        fileSearchHasPatternSearch: {
+            value: false,
+            tooltip: "Uses grep so has pattern recognition",
+        },
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: "TBC",
 
-
-
-        //https://github.com/jopemachine/arvis-simple-websearch-plugin
-        webSearch: true,
-        webSearchIsCustomisable: true,
-
-        //https://github.com/jopemachine/arvis-chrome-bookmark-plugin
+        webSearch: false,
+        webSearchIsCustomisable: "N/A",
         webBookmarkSearch: true,
-
 
         //SETTINGS
         settingsStyle: "TBC",
@@ -1277,9 +1369,6 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
-
-
     },
-
     //TODO: AlbertLauncher  https://albertlauncher.github.io/
 ];
