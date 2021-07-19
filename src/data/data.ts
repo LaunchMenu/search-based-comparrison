@@ -299,7 +299,7 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: 1,
         uxFuzzySearch: false,
         uxSearchHighlights: false,
-        uxLanguagesSupported: [],
+        uxLanguagesSupported: ["en"],
         uxHasUndoRedo: false,
 
         pluginsAreSupported: true,
@@ -864,7 +864,7 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: "TBC",
         uxFuzzySearch: false,
         uxSearchHighlights: true,
-        uxLanguagesSupported: [],
+        uxLanguagesSupported: ["en"],
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
@@ -1045,7 +1045,7 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: "TBC",
         uxFuzzySearch: "TBC",
         uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
+        uxLanguagesSupported: ["en"],
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
@@ -1252,7 +1252,7 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: "TBC",
         uxFuzzySearch: "TBC",
         uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
+        uxLanguagesSupported: ["en"],
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
@@ -1324,7 +1324,7 @@ export let data: IApplicationInfo[] = [
         uxUserDocumentationRating: "TBC",
         uxFuzzySearch: "TBC",
         uxSearchHighlights: "TBC",
-        uxLanguagesSupported: [],
+        uxLanguagesSupported: ["en"],
         uxHasUndoRedo: "TBC",
 
         pluginsAreSupported: true,
