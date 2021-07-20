@@ -26,7 +26,7 @@ export let data: IApplicationInfo[] = [
         applicationLastCommitDate: () => getGitLastCommitOn("launchmenu/launchmenu"),
         applicationFramework: "Electron TypeScript React",
         applicationRAMUsage: {
-            value: "50MB-100MB",
+            value: "100MB",
             tooltip:
                 "Important to note that LM currently doesn't have a FileSystem which will likely alter this value",
         },
@@ -36,20 +36,20 @@ export let data: IApplicationInfo[] = [
         uxIntroductionScreen: true,
         uxUserDocumentationRating: {
             value: 4,
-            tooltip: "The home page gives a great overview of most LM features",
+            tooltip: "The home page gives a detailed overview of most LM features",
         },
         uxFuzzySearch: true,
         uxSearchHighlights: true,
         uxLanguagesSupported: ["en"],
-        uxHasUndoRedo: {value: "PLANNED", tooltip: "System exists, no UI."},
+        uxHasUndoRedo: {value: "PlannedShortTerm", tooltip: "System exists, no UI."},
 
         //Plugin system
         pluginsAreSupported: true,
-        pluginsManagerAvailable: "PLANNED",
+        pluginsManagerAvailable: "PlannedShortTerm",
         pluginsFramework: "TypeScript React",
         pluginsDocumentationRating: 4,
         pluginsCanCustomiseOtherPluginsItemActions: {
-            value: "PLANNED", //via https://github.com/LaunchMenu/LaunchMenu/issues/157
+            value: "PlannedLongTerm", //via https://github.com/LaunchMenu/LaunchMenu/issues/157
             tooltip:
                 "Is possible, isn't recommended. LM Applets provide an API where this can be done more easily.",
         },
@@ -64,43 +64,52 @@ export let data: IApplicationInfo[] = [
         applyActionsAcrossMultipleItems: true,
         searchableSubMenusAndContextMenus: true,
 
-        prioritisedSearchingOnUse: "PLANNED",
+        prioritisedSearchingOnUse: "PlannedLongTerm",
         hasTextInsertion: {
             value: true,
             tooltip: "Currently using copy-exit-paste handler",
         },
-        hasInstantSend: "PLANNED",
-        hasInAppMnemonics: "PLANNED",
-        hasGlobalMnemonics: "PLANNED",
-        hasSearchesOnActiveWindowContext: "PLANNED",
+        hasInstantSend: "PlannedLongTerm",
+        hasInAppMnemonics: "PlannedLongTerm",
+        hasGlobalMnemonics: "PlannedLongTerm",
+        hasSearchesOnActiveWindowContext: "PlannedLongTerm",
 
         //FILE SEARCH
-        fileSearchExists: "PLANNED",
-        fileSearchCanSearchFileContents: "PLANNED",
-        fileSearchIntegratesWithNativeFileSystem: "PLANNED",
-        fileSearchIsIndexed: "PLANNED",
-        fileSearchHasPatternSearch: "PLANNED",
-        fileSearchHasContentPatternSearch: "PLANNED",
-        fileSearchHasFileStructures: "PLANNED",
-        fileSearchHasConfigurableRoots: "PLANNED",
+        fileSearchExists: "PlannedLongTerm",
+        fileSearchCanSearchFileContents: "PlannedLongTerm",
+        fileSearchIntegratesWithNativeFileSystem: {
+            value: false,
+            tooltip: "Not a priority",
+        },
+        fileSearchIsIndexed: "PlannedLongTerm",
+        fileSearchHasPatternSearch: "PlannedLongTerm",
+        fileSearchHasContentPatternSearch: "PlannedLongTerm",
+        fileSearchHasFileStructures: "PlannedLongTerm",
+        fileSearchHasConfigurableRoots: "PlannedLongTerm",
 
         //WEB SEARCH
-        webSearch: "PLANNED",
-        webSearchIsCustomisable: "PLANNED",
+        webSearch: "PlannedShortTerm",
+        webSearchIsCustomisable: "PlannedShortTerm",
 
         //BOOKMARKS
-        webBookmarkSearch: "PLANNED",
+        webBookmarkSearch: {
+            value: false,
+            tooltip: "Not a priority. Should be easy to build though.",
+        },
 
         //SETTINGS
         settingsStyle: "Menu-Based",
         settingsArePortable: {
-            value: "PLANNED",
+            value: "PlannedShortTerm",
             tooltip:
                 "You can manually copy the settings folder, but currently no UI available for this.",
         },
 
         //THEMES
-        themesCanChangeColors: {value: "PLANNED", tooltip: "System exists, no UI yet."},
+        themesCanChangeColors: {
+            value: "PlannedShortTerm",
+            tooltip: "System exists, no UI yet.",
+        },
         themesCanChangeLayout: {
             value: false,
             tooltip: "Can be accomplished via applets which replace SessionManager",
@@ -1044,21 +1053,21 @@ export let data: IApplicationInfo[] = [
         applicationFramework: "Unknown",
         applicationRAMUsage: "TBC",
         uxInstallersProvided: true,
-        uxIntroductionScreen: "TBC",
-        uxUserDocumentationRating: "TBC",
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
+        uxIntroductionScreen: false,
+        uxUserDocumentationRating: 2, //https://obdev.at/resources/launchbar/help/index.php?chapter=TipsAndTricks
+        uxFuzzySearch: true,
+        uxSearchHighlights: false,
         uxLanguagesSupported: ["en"],
-        uxHasUndoRedo: "TBC",
+        uxHasUndoRedo: false,
 
         pluginsAreSupported: true,
-        pluginsManagerAvailable: "TBC",
+        pluginsManagerAvailable: true,
         pluginsFramework: {
             value: "Javascript Applescript Any",
             tooltip:
                 "LaunchBar extensions in 'any' language - requests a JSON array of menu items to display.",
         },
-        pluginsDocumentationRating: "TBC",
+        pluginsDocumentationRating: 2, //https://developer.obdev.at/launchbar-developer-documentation/#/implementing-actions-javascript
 
         contentPaneExists: false,
         contentPaneFunctionalContent: "N/A",
@@ -1070,9 +1079,9 @@ export let data: IApplicationInfo[] = [
         prioritisedSearchingOnUse: true,
         hasTextInsertion: false,
         hasInstantSend: true,
-        hasInAppMnemonics: "TBC",
-        hasGlobalMnemonics: "TBC",
-        hasSearchesOnActiveWindowContext: "TBC",
+        hasInAppMnemonics: false,
+        hasGlobalMnemonics: false,
+        hasSearchesOnActiveWindowContext: false,
 
         fileSearchExists: true,
         fileSearchCanSearchFileContents: false,
@@ -1081,19 +1090,19 @@ export let data: IApplicationInfo[] = [
         fileSearchHasPatternSearch: false,
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: "TBC",
+        fileSearchHasConfigurableRoots: true,
 
         webSearch: true,
         webSearchIsCustomisable: true,
         webBookmarkSearch: true,
 
         //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
+        settingsStyle: "GUI-Based",
+        settingsArePortable: false, //Settings stored in ~/Library/Application Support/LaunchBar but no in-built feature
 
         //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
+        themesCanChangeColors: true,
+        themesCanChangeLayout: false,
     },
     {
         applicationName: "Spotlight",
@@ -1188,8 +1197,8 @@ export let data: IApplicationInfo[] = [
         uxInstallersProvided: true,
         uxIntroductionScreen: false,
         uxUserDocumentationRating: 2,
-        uxFuzzySearch: "TBC",
-        uxSearchHighlights: "TBC",
+        uxFuzzySearch: false,
+        uxSearchHighlights: false,
         uxLanguagesSupported: ["en"],
         uxHasUndoRedo: false,
 
@@ -1226,12 +1235,12 @@ export let data: IApplicationInfo[] = [
         webBookmarkSearch: true,
 
         //SETTINGS
-        settingsStyle: "TBC",
-        settingsArePortable: "TBC",
+        settingsStyle: "GUI-Based",
+        settingsArePortable: false,
 
         //THEMES
-        themesCanChangeColors: "TBC",
-        themesCanChangeLayout: "TBC",
+        themesCanChangeColors: false,
+        themesCanChangeLayout: false,
     },
     {
         applicationName: "Ulauncher",

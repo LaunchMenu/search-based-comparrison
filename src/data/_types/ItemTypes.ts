@@ -11,11 +11,12 @@ export type IDataItem<T> =
 
 /**
  * Item status <T>. Can also contain some special values indicate other situations:
- *   PLANNED - Where the feature is planned but not currently available.
+ *   ShortTermPlan - Feature is planned / currently being worked on / Is a short way of being complete.
+ *   LongTermPlan  - Feature is planned but ETA is in far future / not high priority for core dev team.
  *   N/A     - A feature can't be implemented because a dependency is missing.
  *   TBC     - Feature status is "To be confirmed"
  */
-export type IPlannableItem<T> = IDataItem<T | "PLANNED">;
+export type IPlannableItem<T> = IDataItem<T | "PlannedShortTerm" | "PlannedLongTerm">;
 
 /**
  * A useful link required during comparison

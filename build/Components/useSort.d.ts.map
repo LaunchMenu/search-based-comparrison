@@ -1,1 +1,1 @@
-{"version":3,"file":"useSort.d.ts","sourceRoot":"","sources":["../../src/Components/useSort.ts"],"names":[],"mappings":"AAGA,OAAO,EAAC,QAAQ,EAAC,MAAM,mBAAmB,CAAC;AAC3C,OAAO,EAAC,WAAW,EAAC,MAAM,sBAAsB,CAAC;AAIjD,eAAO,MAAM,OAAO;qCAaoB,OAAO;;;;CAiC9C,CAAC"}
+{"version":3,"file":"useSort.d.ts","sourceRoot":"","sources":["../../src/Components/useSort.ts"],"names":[],"mappings":"AAKA,OAAO,EAAC,aAAa,EAAC,MAAM,wBAAwB,CAAC;AAIrD,eAAO,MAAM,OAAO;0BAQU,MAAM,4BAA2B,OAAO;;;;CAkCrE,CAAC"}

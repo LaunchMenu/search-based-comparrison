@@ -3,25 +3,22 @@ import {jsx} from "@emotion/react";
 import {data} from "../data/data";
 import {IRowData} from "./_types/IRowData";
 import {TGetRowData} from "./_types/TGetRowData";
+import {ICategoryData} from "./_types/ICategoryData";
 import {IDataItem} from "../data/_types/ItemTypes";
 import {Spinner} from "./Spinner";
 
-export const useSort = <T extends Object>(
-    data: T[],
-    rows: Partial<
-        {
-            [K in keyof T]: IRowData<TGetRowData<T[K]>>;
-        }
-    >
-) => {
+export const useSort = <T extends Object>(data: T[], categories: ICategoryData<T>[]) => {
     const [ascending, setAscending] = useState(false);
-    const [key, setKey] = useState<keyof T>(Object.keys(rows)[0] as keyof T);
+    const [key, setKey] = useState<keyof T>(
+        Object.keys(categories[0].data)[0] as keyof T
+    );
     const [sorted, setSorted] = useState(data);
 
     return {
-        sort: (key: keyof T, ascending: boolean = false) => {
+        sort: (categoryIndex: number, key: keyof T, ascending: boolean = false) => {
             const sort =
-                rows[key]?.sort ?? ((a: any, b: any) => a.toString() < b.toString());
+                categories[categoryIndex].data[key]?.sort ??
+                ((a: any, b: any) => a.toString() < b.toString());
             Promise.all(
                 data.map(el => {
                     const item = el[key];

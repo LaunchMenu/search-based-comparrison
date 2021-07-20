@@ -1,10 +1,9 @@
 import { jsx } from "@emotion/react";
-import { IRowData } from "./_types/IRowData";
-import { TGetRowData } from "./_types/TGetRowData";
+import { ICategoryData } from "./_types/ICategoryData";
 /** A table component to render data */
-export declare const DataTable: <T extends Object>({ data, getKey, rows, }: {
+export declare const DataTable: <T extends Object>({ data, getKey, categories, }: {
     data: T[];
     getKey: (entry: T) => string;
-    rows: Partial<{ [K in keyof T]: IRowData<TGetRowData<T[K]>>; }>;
+    categories: ICategoryData<T>[];
 }) => jsx.JSX.Element;
 //# sourceMappingURL=DataTable.d.ts.map

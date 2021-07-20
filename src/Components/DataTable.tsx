@@ -3,6 +3,7 @@ import {jsx} from "@emotion/react";
 import {data} from "../data/data";
 import {IRowData} from "./_types/IRowData";
 import {TGetRowData} from "./_types/TGetRowData";
+import {ICategoryData} from "./_types/ICategoryData";
 import {IDataItem} from "../data/_types/ItemTypes";
 import {Spinner} from "./Spinner";
 import {useSort} from "./useSort";
@@ -11,69 +12,86 @@ import {useSort} from "./useSort";
 export const DataTable = <T extends Object>({
     data,
     getKey,
-    rows,
+    categories,
 }: {
     data: T[];
     getKey: (entry: T) => string;
-    rows: Partial<
-        {
-            [K in keyof T]: IRowData<TGetRowData<T[K]>>;
-        }
-    >;
+    categories: ICategoryData<T>[];
 }) => {
-    const {sorted, sort, ascending, key: sortKey} = useSort(data, rows);
+    const {sorted, sort, ascending, key: sortKey} = useSort(data, categories);
+
+    const headerColor = "#4F81BD";
+    const tableData = categories.map(({name, tooltip, data: categoryData}, i) => [
+        ...(name
+            ? [
+                  <tr
+                      key={name}
+                      title={tooltip}
+                      css={{
+                          textAlign: "left",
+                          color: "white",
+                          backgroundColor: headerColor,
+                      }}>
+                      <th colSpan={data.length + 1}>{name}</th>
+                  </tr>,
+              ]
+            : []),
+        ...Object.entries(categoryData).map(([rowName, row], j) => {
+            const isHeader = i == 0 && j == 0;
+            const CellType = i == 0 && j == 0 ? "th" : "td";
+            const {description} = row;
+
+            return (
+                <tr
+                    key={rowName}
+                    css={{
+                        textAlign: "center",
+                        color: isHeader ? "white" : "black",
+                        backgroundColor: isHeader
+                            ? headerColor
+                            : j % 2 == 0
+                            ? "#B8CCE4"
+                            : "#DCE5F2",
+                        position: isHeader ? "sticky" : "relative",
+                        top: 0,
+                        zIndex: isHeader ? 1 : 0,
+                    }}>
+                    {
+                        <CellType
+                            css={{textAlign: "left", cursor: "pointer"}}
+                            onClick={() => {
+                                sort(
+                                    i,
+                                    rowName as keyof T,
+                                    sortKey == rowName ? !ascending : ascending
+                                );
+                            }}>
+                            {description}
+                        </CellType>
+                    }
+
+                    {sorted.map((item, index) => {
+                        const value = item[rowName as keyof T];
+                        const key = getKey(item);
+
+                        return (
+                            <DataCell
+                                key={key}
+                                row={row}
+                                index={index}
+                                data={value}
+                                CellType={CellType}
+                            />
+                        );
+                    })}
+                </tr>
+            );
+        }),
+    ]);
 
     return (
-        <table>
-            <tbody>
-                {Object.entries(rows).map(([rowName, row], i) => {
-                    const CellType = i == 0 ? "th" : "td";
-                    const {description} = row;
-
-                    return (
-                        <tr
-                            key={rowName}
-                            css={{
-                                textAlign: "center",
-                                color: i == 0 ? "white" : "black",
-                                backgroundColor:
-                                    i == 0
-                                        ? "#4F81BD"
-                                        : i % 2 == 0
-                                        ? "#B8CCE4"
-                                        : "#DCE5F2",
-                            }}>
-                            {
-                                <CellType
-                                    css={{textAlign: "left", cursor: "pointer"}}
-                                    onClick={() => {
-                                        sort(
-                                            rowName as keyof T,
-                                            sortKey == rowName ? !ascending : ascending
-                                        );
-                                    }}>
-                                    {description}
-                                </CellType>
-                            }
-
-                            {sorted.map((item, index) => {
-                                const value = item[rowName as keyof T];
-                                const key = getKey(item);
-
-                                return (
-                                    <DataCell
-                                        key={key}
-                                        row={row}
-                                        index={index}
-                                        data={value}
-                                        CellType={CellType}
-                                    />
-                                );
-                            })}
-                        </tr>
-                    );
-                })}
-            </tbody>
+        <table css={{position: "relative"}}>
+            <tbody>{tableData}</tbody>
         </table>
     );
 };
