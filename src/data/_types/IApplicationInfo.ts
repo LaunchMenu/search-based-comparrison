@@ -1,4 +1,10 @@
-import { IDataItem, ILanguageCode, IOperatingSystem, IPlannableItem, ISite } from "./ItemTypes";
+import {
+    IDataItem,
+    ILanguageCode,
+    IOperatingSystem,
+    IPlannableItem,
+    ISite,
+} from "./ItemTypes";
 export type IApplicationInfo = {
     // ***********************
     // * PROJECT INFORMATION *
@@ -47,13 +53,12 @@ export type IApplicationInfo = {
     /** A rough estimate from typical usage of application */
     applicationRAMUsage: IDataItem<string | number>;
 
-
     // *******************
     // * USER EXPERIENCE *
     // *******************
 
     /**
-     *  Whether executables are provided indicates ease of install 
+     *  Whether executables are provided indicates ease of install
      */
     uxInstallersProvided: IPlannableItem<boolean>;
 
@@ -119,12 +124,12 @@ export type IApplicationInfo = {
     // ****************
     // The content pane typically appears to the right of the menu of items and displays content about the selected item.
 
-    /** 
+    /**
      * Does the software have a content / preview pane
      */
     contentPaneExists: IPlannableItem<boolean>;
 
-    /** 
+    /**
      * Is it possible to interact with the data/items in the content pane? If not present by default can plugins add this feature easily?
      */
     contentPaneFunctionalContent: IPlannableItem<boolean>;
@@ -171,7 +176,7 @@ export type IApplicationInfo = {
     /**
      * Does the application use the ability to insert text directly into the caret location.
      *   * In launchmenu we do this by copying some text to the clipboard and inserting it directly.
-     *   * Other systems may use accessibility or other means to insert text into the top application 
+     *   * Other systems may use accessibility or other means to insert text into the top application
      */
     hasTextInsertion: IPlannableItem<boolean>;
 
@@ -249,7 +254,7 @@ export type IApplicationInfo = {
     /**
      * Are the roots in which the file system searches configurable?
      */
-    fileSearchHasConfigurableRoots: IPlannableItem<boolean>
+    fileSearchHasConfigurableRoots: IPlannableItem<boolean>;
 
     // **************
     // * WEB SEARCH *
@@ -285,7 +290,7 @@ export type IApplicationInfo = {
      * * Menu-Based - Changing settings involves reusing the same system the search system already uses.
      * * GUI-based - Changing settings launches a seperate GUI users can use to modify settings.
      */
-    settingsStyle: "N/A" | "TBC" | "Text-Based" | "Menu-Based" | "GUI-Based"
+    settingsStyle: "N/A" | "TBC" | "Text-Based" | "Menu-Based" | "GUI-Based";
 
     /**
      * Can you import and export the settings?
@@ -305,6 +310,29 @@ export type IApplicationInfo = {
      * Can themes change the layout of the application?
      */
     themesCanChangeLayout: IPlannableItem<boolean>;
+
+    // **************
+    // * Calculator *
+    // **************
+    calculatorExists: IPlannableItem<boolean>;
+    calculatorUsesMathParser: IPlannableItem<boolean>;
+    calculatorSupportsUnits: IPlannableItem<boolean>;
+    calculatorSupportsUnitConversions: IPlannableItem<boolean>;
+    calculatorHasForwardBracketRecovery: IPlannableItem<boolean>;
+    calculatorHasBackwardBracketRecovery: IPlannableItem<boolean>;
+    calculatorHasNumberFormats: IPlannableItem<boolean>;
+    calculatorOperatorList: string[];
+    calculatorIsExtendable: IPlannableItem<boolean>;
+
+    // **********
+    // * IMAGES *
+    // **********
+    imageMain: string;
+    imageSearch: string;
+    imageSettings: string;
+    imageFileSearch: string;
+    imageCalculator: string;
+    imagesMisc: string[];
 
     /**
      * Any outstanding remarks

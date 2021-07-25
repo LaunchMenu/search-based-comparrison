@@ -115,6 +115,27 @@ export let data: IApplicationInfo[] = [
             tooltip: "Can be accomplished via applets which replace SessionManager",
         },
 
+        //Images
+        imageMain: "LaunchMenu/1. Main.png",
+        imageSearch: "LaunchMenu/2. Search.png",
+        imageSettings: "LaunchMenu/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "PlannedShortTerm",
+        calculatorUsesMathParser: "PlannedShortTerm",
+        calculatorSupportsUnits: "PlannedShortTerm",
+        calculatorSupportsUnitConversions: "PlannedShortTerm",
+        calculatorHasForwardBracketRecovery: "PlannedShortTerm",
+        calculatorHasBackwardBracketRecovery: "PlannedShortTerm",
+        calculatorHasNumberFormats: "PlannedShortTerm",
+        calculatorOperatorList: "+,-,/,*,!,%,^,mod,as,in".split(","),
+        calculatorIsExtendable: true,
+        //Supports decimal seperator
+        //Supports comma as decimal seperator
+
         //Final remarks
         remarks: "",
     },
@@ -202,6 +223,25 @@ export let data: IApplicationInfo[] = [
             tooltip: "Does at least provide a dark/light theme",
         },
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "cerebro/1. Main.png",
+        imageSearch: "cerebro/2. Search.png",
+        imageSettings: "cerebro/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: {value: false, tooltip: "Uses JavaScript's Eval()"},
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: false,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: "+,-,/,*,**".split(","),
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "Zazu",
@@ -274,6 +314,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: false,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Zazu/1. Main.png",
+        imageSearch: "Zazu/2. Search.png",
+        imageSettings: "Zazu/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: {value: true, tooltip: "Uses mathjs"},
+        calculatorSupportsUnits: true,
+        calculatorSupportsUnitConversions: true,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: true,
+        calculatorOperatorList: [],
+        calculatorIsExtendable: false,
     },
 
     {
@@ -350,6 +409,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Launchy/1. Main.png",
+        imageSearch: "Launchy/2. Search.png",
+        imageSettings: "Launchy/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: true,
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: false,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: "+,-,/,*".split(","),
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "Arvis",
@@ -364,7 +442,7 @@ export let data: IApplicationInfo[] = [
             {type: "windows", supported: true},
             {type: "linux", supported: true},
         ],
-        remarks: "",
+        remarks: "Calculator also supports booleans, logic and matrices",
         applicationLastReleaseVersion: () =>
             getGitLastReleaseVersion("jopemachine/arvis"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("jopemachine/arvis"),
@@ -422,6 +500,27 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Arvis/1. Main.png",
+        imageSearch: "Arvis/2. Search.png",
+        imageSettings: "Arvis/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: {value: true, tooltip: "Uses mathjs"},
+        calculatorSupportsUnits: true,
+        calculatorSupportsUnitConversions: true,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: true,
+        calculatorOperatorList: [],
+        calculatorIsExtendable: false,
+        //TODO: supports matrices
+        //TODO: supports booleans
     },
     {
         applicationName: "ueli",
@@ -507,6 +606,27 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "ueli/1. Main.png",
+        imageSearch: "ueli/2. Search.png",
+        imageSettings: "ueli/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: {value: true, tooltip: "Uses mathjs"},
+        calculatorSupportsUnits: true,
+        calculatorSupportsUnitConversions: true,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: true,
+        calculatorOperatorList: [],
+        calculatorIsExtendable: false,
+        //TODO: calculator supports booleans and logic
+        //TODO: calculator supports matrices
     },
     {
         applicationName: "Hain",
@@ -574,6 +694,29 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Hain/1. Main.png",
+        imageSearch: "Hain/2. Search.png",
+        imageSettings: "Hain/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: {
+            value: true,
+            tooltip:
+                "uses mathjs, however only supports numerical return type so units, matrices and logic features aren't supported",
+        },
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: false,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: [],
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "Keypirinha",
@@ -656,6 +799,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: true,
+
+        //IMAGES
+        imageMain: "Keypirinha/1. Main.png",
+        imageSearch: "Keypirinha/2. Search.png",
+        imageSettings: "Keypirinha/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     {
         applicationName: "Wox",
@@ -743,9 +905,29 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Wox/1. Main.png",
+        imageSearch: "Wox/2. Search.png",
+        imageSettings: "Wox/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     {
-        applicationName: "Listary", //open listary with ctrl+ctrl or start typing in windows explorer
+        //open listary with ctrl+ctrl or start typing in windows explorer
+        applicationName: "Listary",
         applicationStatus: "Discontinued",
         applicationWebSites: [{type: "main", url: "https://www.listary.com/"}],
         applicationCost: "Free/£17.50",
@@ -842,6 +1024,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Listary/1. Main.png",
+        imageSearch: "Listary/2. Search.png",
+        imageSettings: "Listary/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     {
         applicationName: "FluentSearch",
@@ -921,6 +1122,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: {value: false, tooltip: "Only light and dark theme."},
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "FluentSearch/1. Main.png",
+        imageSearch: "FluentSearch/2. Search.png",
+        imageSettings: "FluentSearch/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     {
         applicationName: "Alfred",
@@ -979,7 +1199,7 @@ export let data: IApplicationInfo[] = [
         contentPaneFunctionalContent: "N/A",
         recursiveItemFolders: false,
         itemsHaveMultipleActions: {
-            value: true,
+            value: "PREMIUM",
             tooltip:
                 "Only file items have multiple actions, Normal items only have 1 action",
         },
@@ -995,7 +1215,10 @@ export let data: IApplicationInfo[] = [
             tooltip: "Prioritised search appears to exist only for File items.",
         },
         hasTextInsertion: true, //word spreading
-        hasInstantSend: true,
+        hasInstantSend: {
+            value: "PREMIUM",
+            tooltip: "As part of universal actions",
+        },
         hasInAppMnemonics: false,
         hasGlobalMnemonics: false,
         hasSearchesOnActiveWindowContext: false,
@@ -1027,6 +1250,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: true,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Alfred/1. Main.png",
+        imageSearch: "Alfred/2. Search.png",
+        imageSettings: "Alfred/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: true,
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: {value: "PREMIUM", tooltip: "Via workflows"}, //https://www.alfredforum.com/topic/5256-advanced-calculator-with-fast-off-line-unit-converter/?tab=comments#comment-32109
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: {value: "PREMIUM", tooltip: "Via workflows"}, //https://www.alfredforum.com/topic/5256-advanced-calculator-with-fast-off-line-unit-converter/?tab=comments#comment-32109
+        calculatorOperatorList: "+,-,*,/,^".split(","),
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "LaunchBar",
@@ -1052,16 +1294,16 @@ export let data: IApplicationInfo[] = [
         },
         applicationFramework: "Unknown",
         applicationRAMUsage: "TBC",
-        uxInstallersProvided: true,
+        uxInstallersProvided: "PREMIUM",
         uxIntroductionScreen: false,
         uxUserDocumentationRating: 2, //https://obdev.at/resources/launchbar/help/index.php?chapter=TipsAndTricks
-        uxFuzzySearch: true,
+        uxFuzzySearch: "PREMIUM",
         uxSearchHighlights: false,
         uxLanguagesSupported: ["en"],
         uxHasUndoRedo: false,
 
-        pluginsAreSupported: true,
-        pluginsManagerAvailable: true,
+        pluginsAreSupported: "PREMIUM",
+        pluginsManagerAvailable: "PREMIUM",
         pluginsFramework: {
             value: "Javascript Applescript Any",
             tooltip:
@@ -1071,38 +1313,57 @@ export let data: IApplicationInfo[] = [
 
         contentPaneExists: false,
         contentPaneFunctionalContent: "N/A",
-        recursiveItemFolders: true,
-        itemsHaveMultipleActions: true,
+        recursiveItemFolders: "PREMIUM",
+        itemsHaveMultipleActions: "PREMIUM",
         applyActionsAcrossMultipleItems: false,
-        searchableSubMenusAndContextMenus: true,
+        searchableSubMenusAndContextMenus: "PREMIUM",
         pluginsCanCustomiseOtherPluginsItemActions: "TBC",
-        prioritisedSearchingOnUse: true,
+        prioritisedSearchingOnUse: "PREMIUM",
         hasTextInsertion: false,
-        hasInstantSend: true,
+        hasInstantSend: "PREMIUM",
         hasInAppMnemonics: false,
         hasGlobalMnemonics: false,
         hasSearchesOnActiveWindowContext: false,
 
-        fileSearchExists: true,
+        fileSearchExists: "PREMIUM",
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: true,
+        fileSearchIsIndexed: "PREMIUM",
         fileSearchHasPatternSearch: false,
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
-        fileSearchHasConfigurableRoots: true,
+        fileSearchHasConfigurableRoots: "PREMIUM",
 
-        webSearch: true,
-        webSearchIsCustomisable: true,
-        webBookmarkSearch: true,
+        webSearch: "PREMIUM",
+        webSearchIsCustomisable: "PREMIUM",
+        webBookmarkSearch: "PREMIUM",
 
         //SETTINGS
         settingsStyle: "GUI-Based",
         settingsArePortable: false, //Settings stored in ~/Library/Application Support/LaunchBar but no in-built feature
 
         //THEMES
-        themesCanChangeColors: true,
+        themesCanChangeColors: "PREMIUM",
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "LaunchBar/1. Main.png",
+        imageSearch: "LaunchBar/2. Search.png",
+        imageSettings: "LaunchBar/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "PREMIUM",
+        calculatorUsesMathParser: false,
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: false,
+        calculatorHasForwardBracketRecovery: false,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: "-,*,+,/,^".split(","),
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "Spotlight",
@@ -1176,6 +1437,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: false,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "Spotlight/1. Main.png",
+        imageSearch: "Spotlight/2. Search.png",
+        imageSettings: "Spotlight/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: true,
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: true,
+        calculatorHasForwardBracketRecovery: true,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: "+,-,*,/,x,^,!,%,mod".split(","), //Doesn't support
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "FlashLight",
@@ -1241,6 +1521,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: false,
         themesCanChangeLayout: false,
+
+        //IMAGES
+        imageMain: "FlashLight/1. Main.png",
+        imageSearch: "FlashLight/2. Search.png",
+        imageSettings: "FlashLight/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: true,
+        calculatorUsesMathParser: true,
+        calculatorSupportsUnits: false,
+        calculatorSupportsUnitConversions: true,
+        calculatorHasForwardBracketRecovery: true,
+        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasNumberFormats: false,
+        calculatorOperatorList: "+,-,*,/,x,^,!,%,mod".split(","), //Doesn't support
+        calculatorIsExtendable: false,
     },
     {
         applicationName: "Ulauncher",
@@ -1315,6 +1614,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
+
+        //IMAGES
+        imageMain: "Ulauncher/1. Main.png",
+        imageSearch: "Ulauncher/2. Search.png",
+        imageSettings: "Ulauncher/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     {
         applicationName: "Rofi",
@@ -1381,6 +1699,25 @@ export let data: IApplicationInfo[] = [
         //THEMES
         themesCanChangeColors: "TBC",
         themesCanChangeLayout: "TBC",
+
+        //IMAGES
+        imageMain: "Rofi/1. Main.png",
+        imageSearch: "Rofi/2. Search.png",
+        imageSettings: "Rofi/3. Settings.png",
+        imageFileSearch: "",
+        imageCalculator: "",
+        imagesMisc: [],
+
+        //CALCULATOR
+        calculatorExists: "TBC",
+        calculatorUsesMathParser: "TBC",
+        calculatorSupportsUnits: "TBC",
+        calculatorSupportsUnitConversions: "TBC",
+        calculatorHasForwardBracketRecovery: "TBC",
+        calculatorHasBackwardBracketRecovery: "TBC",
+        calculatorHasNumberFormats: "TBC",
+        calculatorOperatorList: [],
+        calculatorIsExtendable: "TBC",
     },
     //TODO: AlbertLauncher  https://albertlauncher.github.io/
 ];

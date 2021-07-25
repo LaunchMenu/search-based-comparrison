@@ -302,7 +302,7 @@ const Table: FC = () => (
                     uxSearchHighlights: {
                         description: (
                             <TooltipDiv
-                                content="Results highlighted by query input"
+                                content="Search results highlighted by query input"
                                 tooltip="Sometimes it can be difficult to know how a search matched the query you entered. Search highlights help this usability."
                             />
                         ),
@@ -424,7 +424,7 @@ const Table: FC = () => (
                         description: (
                             <TooltipDiv
                                 content="Does the application have instant send"
-                                tooltip="This feature takes the currently selected item/text in another application and performs a search / action search based on the selected item."
+                                tooltip="This feature takes the currently selected item/text in another application and performs a search / action based on the item selected."
                             />
                         ),
                         css: colorBoolean,
@@ -569,6 +569,58 @@ const Table: FC = () => (
                     },
                     themesCanChangeLayout: {
                         description: "You can customise the layout of the application?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                },
+            },
+            {
+                name: "Calculator",
+                data: {
+                    calculatorExists: {
+                        description: "Does a calculator exist?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorUsesMathParser: {
+                        description: "Does calculator support traditional Math syntax",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorSupportsUnits: {
+                        description: "Does calculator support calculations with units?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorSupportsUnitConversions: {
+                        description: "Does calculator support unit conversions?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorHasForwardBracketRecovery: {
+                        description:
+                            "Does calculator support forward closing bracket recovery?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorHasBackwardBracketRecovery: {
+                        description:
+                            "Does calculator support backward opening bracket recovery?",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorHasNumberFormats: {
+                        description:
+                            "Does calculator have number formats (e.g. binary, date format etc.)",
+                        css: colorBoolean,
+                        Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
+                    },
+                    calculatorOperatorList: {
+                        description: "Operator list",
+                        Comp: ({data}) => <div>{data.join(" ")}</div>,
+                    },
+                    calculatorIsExtendable: {
+                        description: "Is the calculator extensible with plugins?",
                         css: colorBoolean,
                         Comp: ({data}) => <div>{getPlannedBooleanItemIcon(data)}</div>,
                     },
