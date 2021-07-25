@@ -315,7 +315,7 @@ export type IApplicationInfo = {
     // * Calculator *
     // **************
     calculatorExists: IPlannableItem<boolean>;
-    calculatorUsesMathParser: IPlannableItem<boolean>;
+    calculatorUsesTraditionalMathSyntax: IPlannableItem<boolean>;
     calculatorSupportsUnits: IPlannableItem<boolean>;
     calculatorSupportsUnitConversions: IPlannableItem<boolean>;
     calculatorHasForwardBracketRecovery: IPlannableItem<boolean>;
