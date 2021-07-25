@@ -3,22 +3,22 @@ import {
     getGitLastReleaseDate,
     getGitLastReleaseVersion,
 } from "./dynamicData/git";
-import { IApplicationInfo } from "./_types/IApplicationInfo";
+import {IApplicationInfo} from "./_types/IApplicationInfo";
 
 export let data: IApplicationInfo[] = [
     {
         applicationName: "LaunchMenu",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://launchmenu.github.io/" },
-            { type: "github", url: "https://github.com/launchmenu/launchmenu" },
+            {type: "main", url: "https://launchmenu.github.io/"},
+            {type: "github", url: "https://github.com/launchmenu/launchmenu"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: "PLANNED" },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: "PLANNED"},
         ],
         applicationLastReleaseVersion: () =>
             getGitLastReleaseVersion("launchmenu/launchmenu"),
@@ -41,7 +41,7 @@ export let data: IApplicationInfo[] = [
         uxFuzzySearch: true,
         uxSearchHighlights: true,
         uxLanguagesSupported: ["en"],
-        uxHasUndoRedo: { value: "PlannedShortTerm", tooltip: "System exists, no UI." },
+        uxHasUndoRedo: {value: "PlannedShortTerm", tooltip: "System exists, no UI."},
 
         //Plugin system
         pluginsAreSupported: true,
@@ -124,17 +124,26 @@ export let data: IApplicationInfo[] = [
         imagesMisc: [],
 
         //CALCULATOR
-        calculatorExists: { value: "PlannedShortTerm", tooltip: "Using mathjs" },
-        calculatorUsesTraditionalMathSyntax: "PlannedShortTerm",
+        calculatorExists: "PlannedShortTerm",
+        calculatorParserType: "mathjs",
         calculatorSupportsUnits: "PlannedShortTerm",
         calculatorSupportsUnitConversions: "PlannedShortTerm",
-        calculatorHasForwardBracketRecovery: false,
-        calculatorHasBackwardBracketRecovery: false,
+        calculatorHasForwardBracketRecovery: {
+            value: "PlannedShortTerm",
+            tooltip: "Simple bracket recovery",
+        },
+        calculatorHasBackwardBracketRecovery: {
+            value: "PlannedShortTerm",
+            tooltip: "Simple bracket recovery",
+        },
         calculatorHasNumberFormats: "PlannedShortTerm",
-        calculatorOperatorList: "+,-,/,*,!,%,^,mod,as,in".split(","),
-        calculatorIsExtendable: true,
-        //Supports decimal seperator
-        //Supports comma as decimal seperator
+        calculatorOperatorList: "+,-,/,*,!,%,^,in".split(","),
+        calculatorIsExtendable: "PlannedLongTerm",
+        //Custom decimal seperator
+        //https://mathjs.org/examples/browser/custom_separators.html
+        //https://mathjs.org/examples/browser/custom_separators.html.html
+        calculatorSupportsCustomDecimalSeperator: "PlannedShortTerm",
+        calculatorSupportsCustomThousandsSeperator: "TBC",
 
         //Final remarks
         remarks: "",
@@ -143,15 +152,15 @@ export let data: IApplicationInfo[] = [
         applicationName: "cerebro",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://cerebroapp.com/" },
-            { type: "github", url: "https://github.com/cerebroapp/cerebro" },
+            {type: "main", url: "https://cerebroapp.com/"},
+            {type: "github", url: "https://github.com/cerebroapp/cerebro"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
         ],
         remarks: "",
         applicationLastReleaseVersion: () =>
@@ -174,7 +183,7 @@ export let data: IApplicationInfo[] = [
         uxHasUndoRedo: false,
 
         pluginsAreSupported: true,
-        pluginsManagerAvailable: { value: true, tooltip: "Not working on 17 Jul 2021" },
+        pluginsManagerAvailable: {value: true, tooltip: "Not working on 17 Jul 2021"},
         pluginsFramework: "JavaScript",
         pluginsDocumentationRating: 3,
 
@@ -196,7 +205,7 @@ export let data: IApplicationInfo[] = [
         hasGlobalMnemonics: false,
         hasSearchesOnActiveWindowContext: false,
 
-        fileSearchExists: { value: true, tooltip: "Non-default plugin" },
+        fileSearchExists: {value: true, tooltip: "Non-default plugin"},
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
         fileSearchIsIndexed: false,
@@ -234,7 +243,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: { value: false, tooltip: "Uses JavaScript's Eval()" },
+        calculatorParserType: "eval",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: false,
         calculatorHasForwardBracketRecovery: false,
@@ -242,20 +251,22 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,/,*,**".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: "TBC",
+        calculatorSupportsCustomThousandsSeperator: "TBC",
     },
     {
         applicationName: "Zazu",
         applicationStatus: "Discontinued",
         applicationWebSites: [
-            { type: "main", url: "http://zazuapp.org/" },
-            { type: "github", url: "https://github.com/bayleeadamoss/zazu" },
+            {type: "main", url: "http://zazuapp.org/"},
+            {type: "github", url: "https://github.com/bayleeadamoss/zazu"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
         ],
         remarks: "",
         applicationLastReleaseVersion: () =>
@@ -291,7 +302,7 @@ export let data: IApplicationInfo[] = [
         hasGlobalMnemonics: false,
         hasSearchesOnActiveWindowContext: false,
 
-        fileSearchExists: { value: true, tooltip: "No folders" },
+        fileSearchExists: {value: true, tooltip: "No folders"},
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
         fileSearchIsIndexed: {
@@ -325,26 +336,28 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: { value: true, tooltip: "Uses mathjs" },
+        calculatorParserType: "mathjs",
         calculatorSupportsUnits: true,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: false,
         calculatorHasBackwardBracketRecovery: false,
         calculatorHasNumberFormats: true,
-        calculatorOperatorList: [],
+        calculatorOperatorList: "+,-,/,*,!,^,in".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
 
     {
         applicationName: "Launchy",
         applicationStatus: "Discontinued",
-        applicationWebSites: [{ type: "main", url: "http://www.launchy.net/" }],
+        applicationWebSites: [{type: "main", url: "http://www.launchy.net/"}],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
         ],
         remarks:
             "Launchy has crashed a few times on me in short use of the software. Additionally file search is laggy.",
@@ -420,7 +433,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorParserType: "custom",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: false,
         calculatorHasForwardBracketRecovery: false,
@@ -428,19 +441,21 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,/,*".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Arvis",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "github", url: "https://github.com/jopemachine/arvis" },
+            {type: "github", url: "https://github.com/jopemachine/arvis"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
-            { type: "linux", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
+            {type: "linux", supported: true},
         ],
         remarks: "Calculator also supports booleans, logic and matrices",
         applicationLastReleaseVersion: () =>
@@ -481,7 +496,7 @@ export let data: IApplicationInfo[] = [
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
         fileSearchIsIndexed: false, //appears to use https://github.com/mrmlnc/fast-glob which doesn't appear to use an index?
-        fileSearchHasPatternSearch: { value: true, tooltip: "Does have glob patterns" },
+        fileSearchHasPatternSearch: {value: true, tooltip: "Does have glob patterns"},
         fileSearchHasContentPatternSearch: false,
         fileSearchHasFileStructures: false,
         fileSearchHasConfigurableRoots: true,
@@ -511,29 +526,29 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: { value: true, tooltip: "Uses mathjs" },
+        calculatorParserType: "mathjs",
         calculatorSupportsUnits: true,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: false,
         calculatorHasBackwardBracketRecovery: false,
         calculatorHasNumberFormats: true,
-        calculatorOperatorList: [],
+        calculatorOperatorList: "+,-,/,*,!,^,in".split(","),
         calculatorIsExtendable: false,
-        //TODO: supports matrices
-        //TODO: supports booleans
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "ueli",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://ueli.app" },
-            { type: "github", url: "https://github.com/oliverschwendener/ueli" },
+            {type: "main", url: "https://ueli.app"},
+            {type: "github", url: "https://github.com/oliverschwendener/ueli"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
         ],
         remarks: "",
         applicationLastReleaseVersion: () =>
@@ -617,29 +632,29 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: { value: true, tooltip: "Uses mathjs" },
+        calculatorParserType: "mathjs",
         calculatorSupportsUnits: true,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: false,
         calculatorHasBackwardBracketRecovery: false,
         calculatorHasNumberFormats: true,
-        calculatorOperatorList: [],
+        calculatorOperatorList: "+,-,/,*,!,^,in".split(","),
         calculatorIsExtendable: false,
-        //TODO: calculator supports booleans and logic
-        //TODO: calculator supports matrices
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Hain",
         applicationStatus: "Discontinued",
         applicationWebSites: [
-            { type: "main", url: "https://hainproject.github.io/hain/" },
-            { type: "github", url: "https://github.com/hainproject/hain" },
+            {type: "main", url: "https://hainproject.github.io/hain/"},
+            {type: "github", url: "https://github.com/hainproject/hain"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
         applicationOperatingSystemsSupported: [
-            { type: "mac", supported: true },
-            { type: "windows", supported: true },
+            {type: "mac", supported: true},
+            {type: "windows", supported: true},
         ],
         remarks: "",
         applicationLastReleaseVersion: () => getGitLastReleaseVersion("hainproject/hain"),
@@ -705,29 +720,27 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: {
-            value: true,
-            tooltip:
-                "uses mathjs, however only supports numerical return type so units, matrices and logic features aren't supported",
-        },
+        calculatorParserType: "mathjs",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: false,
         calculatorHasForwardBracketRecovery: false,
         calculatorHasBackwardBracketRecovery: false,
         calculatorHasNumberFormats: false,
-        calculatorOperatorList: [],
+        calculatorOperatorList: "+,-,/,*,^".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Keypirinha",
         applicationStatus: "Active",
-        applicationWebSites: [{ type: "main", url: "https://keypirinha.com/" }],
+        applicationWebSites: [{type: "main", url: "https://keypirinha.com/"}],
         applicationCost: "Free",
         applicationSourceType: {
             value: "Closed Source",
             tooltip: "Awaiting clarification",
         },
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks:
             "Duplicate menu items exist and are common from installing multiple packages. Text based configuration can pose as a steep learning curve to non-technical users",
         applicationLastReleaseVersion: {
@@ -778,7 +791,7 @@ export let data: IApplicationInfo[] = [
         fileSearchExists: true,
         fileSearchCanSearchFileContents: false,
         fileSearchIntegratesWithNativeFileSystem: false,
-        fileSearchIsIndexed: { value: false, tooltip: "Only a guess from what i can tell" },
+        fileSearchIsIndexed: {value: false, tooltip: "Only a guess from what i can tell"},
         fileSearchHasPatternSearch: {
             value: true,
             tooltip:
@@ -794,7 +807,7 @@ export let data: IApplicationInfo[] = [
 
         //SETTINGS
         settingsStyle: "Text-Based",
-        settingsArePortable: { value: false, tooltip: "Theoretically yes, but no UI yet." },
+        settingsArePortable: {value: false, tooltip: "Theoretically yes, but no UI yet."},
 
         //THEMES
         themesCanChangeColors: true,
@@ -810,7 +823,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: false,
+        calculatorParserType: "custom",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: false,
@@ -818,20 +831,19 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: true,
         calculatorOperatorList: [],
         calculatorIsExtendable: false,
-        //TODO: Booleans and logic
-        //TODO: thousand_separator
-        //TODO: decimal_separator
+        calculatorSupportsCustomDecimalSeperator: true,
+        calculatorSupportsCustomThousandsSeperator: true,
     },
     {
         applicationName: "Wox",
         applicationStatus: "Passive",
         applicationWebSites: [
-            { type: "main", url: "http://www.wox.one/" },
-            { type: "github", url: "https://github.com/Wox-launcher/Wox" },
+            {type: "main", url: "http://www.wox.one/"},
+            {type: "github", url: "https://github.com/Wox-launcher/Wox"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: () => getGitLastReleaseVersion("Wox-launcher/Wox"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("Wox-launcher/Wox"),
@@ -918,8 +930,8 @@ export let data: IApplicationInfo[] = [
         imagesMisc: [],
 
         //CALCULATOR
-        calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorExists: true, //https://github.com/Wox-launcher/Wox/tree/master/Plugins/Wox.Plugin.Calculator
+        calculatorParserType: "custom", //MagesEngine
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: false,
         calculatorHasForwardBracketRecovery: false,
@@ -927,15 +939,17 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,*,/,!".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: true,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         //open listary with ctrl+ctrl or start typing in windows explorer
         applicationName: "Listary",
         applicationStatus: "Discontinued",
-        applicationWebSites: [{ type: "main", url: "https://www.listary.com/" }],
+        applicationWebSites: [{type: "main", url: "https://www.listary.com/"}],
         applicationCost: "Free/£17.50",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: {
             value: "Listary 6",
@@ -1038,7 +1052,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: false,
-        calculatorUsesTraditionalMathSyntax: "N/A",
+        calculatorParserType: "N/A",
         calculatorSupportsUnits: "N/A",
         calculatorSupportsUnitConversions: "N/A",
         calculatorHasForwardBracketRecovery: "N/A",
@@ -1046,17 +1060,19 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: "N/A",
         calculatorOperatorList: [],
         calculatorIsExtendable: "N/A",
+        calculatorSupportsCustomDecimalSeperator: "N/A",
+        calculatorSupportsCustomThousandsSeperator: "N/A",
     },
     {
         applicationName: "FluentSearch",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://www.fluentsearch.net/" },
-            { type: "github", url: "https://github.com/adirh3/Fluent-Search" },
+            {type: "main", url: "https://www.fluentsearch.net/"},
+            {type: "github", url: "https://github.com/adirh3/Fluent-Search"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "windows", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "windows", supported: true}],
         remarks: "Found .NET framework while inspecting exe in text file.",
         applicationLastReleaseVersion: {
             value: "0.9.86.0",
@@ -1123,7 +1139,7 @@ export let data: IApplicationInfo[] = [
         settingsArePortable: "TBC",
 
         //THEMES
-        themesCanChangeColors: { value: false, tooltip: "Only light and dark theme." },
+        themesCanChangeColors: {value: false, tooltip: "Only light and dark theme."},
         themesCanChangeLayout: false,
 
         //IMAGES
@@ -1136,7 +1152,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: false,
-        calculatorUsesTraditionalMathSyntax: "N/A",
+        calculatorParserType: "N/A",
         calculatorSupportsUnits: "N/A",
         calculatorSupportsUnitConversions: "N/A",
         calculatorHasForwardBracketRecovery: "N/A",
@@ -1144,14 +1160,16 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: "N/A",
         calculatorOperatorList: [],
         calculatorIsExtendable: "N/A",
+        calculatorSupportsCustomDecimalSeperator: "N/A",
+        calculatorSupportsCustomThousandsSeperator: "N/A",
     },
     {
         applicationName: "Alfred",
         applicationStatus: "Active",
-        applicationWebSites: [{ type: "main", url: "https://alfredapp.com/" }],
+        applicationWebSites: [{type: "main", url: "https://alfredapp.com/"}],
         applicationCost: "Free/£29/£49",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: {
             value: "4.5 Prerelease B1245",
@@ -1263,25 +1281,36 @@ export let data: IApplicationInfo[] = [
         imagesMisc: [],
 
         //CALCULATOR
+        //Alfred ships with it's own calculator which is rather bare-bones
+        //This data was extracted from the better [advanced calculator](https://www.alfredforum.com/topic/5256-advanced-calculator-with-fast-off-line-unit-converter/?tab=comments#comment-32109)
+        //plugin. [SourceCode](https://github.com/WoLpH/alfred-converter/)
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorParserType: "eval",
         calculatorSupportsUnits: false,
-        calculatorSupportsUnitConversions: { value: "PREMIUM", tooltip: "Via workflows" }, //https://www.alfredforum.com/topic/5256-advanced-calculator-with-fast-off-line-unit-converter/?tab=comments#comment-32109
-        calculatorHasForwardBracketRecovery: false,
-        calculatorHasBackwardBracketRecovery: false,
-        calculatorHasNumberFormats: { value: "PREMIUM", tooltip: "Via workflows" }, //https://www.alfredforum.com/topic/5256-advanced-calculator-with-fast-off-line-unit-converter/?tab=comments#comment-32109
+        calculatorSupportsUnitConversions: "PREMIUM", //
+        calculatorHasForwardBracketRecovery: {
+            value: "PREMIUM",
+            tooltip: "Simple bracket recovery",
+        },
+        calculatorHasBackwardBracketRecovery: {
+            value: "PREMIUM",
+            tooltip: "Simple bracket recovery",
+        },
+        calculatorHasNumberFormats: "PREMIUM",
         calculatorOperatorList: "+,-,*,/,^".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "LaunchBar",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://obdev.at/products/launchbar/index.html" },
+            {type: "main", url: "https://obdev.at/products/launchbar/index.html"},
         ],
         applicationCost: "£29/£49",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: {
             value: "6.14.1",
@@ -1359,7 +1388,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: "PREMIUM",
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorParserType: "custom",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: false,
         calculatorHasForwardBracketRecovery: false,
@@ -1367,16 +1396,21 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "-,*,+,/,^".split(","),
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: {
+            value: false,
+            tooltip: "allows both , and . instead. Use | for param seperation",
+        },
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Spotlight",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://en.wikipedia.org/wiki/Spotlight_(software)" },
+            {type: "main", url: "https://en.wikipedia.org/wiki/Spotlight_(software)"},
         ],
         applicationCost: "N/A",
         applicationSourceType: "Closed Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks:
             "Big sur version removes the content pane, and preview becomes the default executable action.",
         applicationLastReleaseVersion: {
@@ -1451,7 +1485,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorParserType: "custom",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: true,
@@ -1459,17 +1493,19 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,*,/,x,^,!,%,mod".split(","), //Doesn't support
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "FlashLight",
         applicationStatus: "Discontinued",
         applicationWebSites: [
-            { type: "main", url: "https://www.macenhance.com/flashlight" },
-            { type: "github", url: "https://github.com/w0lfschild/Flashlight" },
+            {type: "main", url: "https://www.macenhance.com/flashlight"},
+            {type: "github", url: "https://github.com/w0lfschild/Flashlight"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "mac", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "mac", supported: true}],
         remarks: "Requires deactivation of System Integrity Protection.",
         applicationLastReleaseVersion: () =>
             getGitLastReleaseVersion("w0lfschild/Flashlight"),
@@ -1535,7 +1571,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: true,
-        calculatorUsesTraditionalMathSyntax: true,
+        calculatorParserType: "custom",
         calculatorSupportsUnits: false,
         calculatorSupportsUnitConversions: true,
         calculatorHasForwardBracketRecovery: true,
@@ -1543,17 +1579,19 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,*,/,x,^,!,%,mod".split(","), //Doesn't support
         calculatorIsExtendable: false,
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Ulauncher",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "main", url: "https://ulauncher.io/" },
-            { type: "github", url: "https://github.com/Ulauncher/Ulauncher/" },
+            {type: "main", url: "https://ulauncher.io/"},
+            {type: "github", url: "https://github.com/Ulauncher/Ulauncher/"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "linux", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "linux", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: () =>
             getGitLastReleaseVersion("Ulauncher/Ulauncher"),
@@ -1628,7 +1666,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: "TBC",
-        calculatorUsesTraditionalMathSyntax: "TBC",
+        calculatorParserType: "TBC",
         calculatorSupportsUnits: "TBC",
         calculatorSupportsUnitConversions: "TBC",
         calculatorHasForwardBracketRecovery: "TBC",
@@ -1636,16 +1674,18 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: "TBC",
         calculatorOperatorList: [],
         calculatorIsExtendable: "TBC",
+        calculatorSupportsCustomDecimalSeperator: "TBC",
+        calculatorSupportsCustomThousandsSeperator: "TBC",
     },
     {
         applicationName: "Rofi",
         applicationStatus: "Active",
         applicationWebSites: [
-            { type: "github", url: "https://github.com/davatorium/rofi" },
+            {type: "github", url: "https://github.com/davatorium/rofi"},
         ],
         applicationCost: "Free",
         applicationSourceType: "Open Source",
-        applicationOperatingSystemsSupported: [{ type: "linux", supported: true }],
+        applicationOperatingSystemsSupported: [{type: "linux", supported: true}],
         remarks: "",
         applicationLastReleaseVersion: () => getGitLastReleaseVersion("davatorium/rofi"),
         applicationLastReleaseDate: () => getGitLastReleaseDate("davatorium/rofi"),
@@ -1713,7 +1753,7 @@ export let data: IApplicationInfo[] = [
 
         //CALCULATOR
         calculatorExists: "TBC",
-        calculatorUsesTraditionalMathSyntax: "TBC",
+        calculatorParserType: "TBC",
         calculatorSupportsUnits: "TBC",
         calculatorSupportsUnitConversions: "TBC",
         calculatorHasForwardBracketRecovery: "TBC",
@@ -1721,6 +1761,8 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: "TBC",
         calculatorOperatorList: [],
         calculatorIsExtendable: "TBC",
+        calculatorSupportsCustomDecimalSeperator: "TBC",
+        calculatorSupportsCustomThousandsSeperator: "TBC",
     },
     //TODO: AlbertLauncher  https://albertlauncher.github.io/
 ];

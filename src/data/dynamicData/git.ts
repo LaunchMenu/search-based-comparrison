@@ -70,7 +70,7 @@ export async function gitCommits(repo: string): Promise<ICommitInfo[]> {
     }
 }
 
-const devmode: boolean = false;
+const devmode: boolean = true;
 export async function getGitLastReleaseVersion(repo: string): Promise<string> {
     if (devmode) return "A version";
     let e = await gitLatestRelease(repo);

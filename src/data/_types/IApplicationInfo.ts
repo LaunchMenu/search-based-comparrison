@@ -314,8 +314,17 @@ export type IApplicationInfo = {
     // **************
     // * Calculator *
     // **************
+    /**
+     * Does a calculator applet/plugin/feature exist?
+     */
     calculatorExists: IPlannableItem<boolean>;
-    calculatorUsesTraditionalMathSyntax: IPlannableItem<boolean>;
+
+    /**
+     * Does the application use traditional math syntax. E.G.
+     *  If you syntax looks like:  5!+sin(30)^3 then that's okay
+     *
+     */
+    calculatorParserType: "eval" | "custom" | "mathjs" | "TBC" | "N/A";
     calculatorSupportsUnits: IPlannableItem<boolean>;
     calculatorSupportsUnitConversions: IPlannableItem<boolean>;
     calculatorHasForwardBracketRecovery: IPlannableItem<boolean>;
@@ -323,6 +332,8 @@ export type IApplicationInfo = {
     calculatorHasNumberFormats: IPlannableItem<boolean>;
     calculatorOperatorList: string[];
     calculatorIsExtendable: IPlannableItem<boolean>;
+    calculatorSupportsCustomDecimalSeperator: IPlannableItem<boolean>;
+    calculatorSupportsCustomThousandsSeperator: IPlannableItem<boolean>;
 
     // **********
     // * IMAGES *
@@ -333,6 +344,18 @@ export type IApplicationInfo = {
     imageFileSearch: string;
     imageCalculator: string;
     imagesMisc: string[];
+
+    //Additional comparrisons:
+    /**
+     * TODO: Session manager equivalent (LM, alfred has an asterisk because File manager opens in a seperate window, maybe can have search open at the same time)
+     * TODO: LM Recorder equivalent
+     * TODO: SettingsAreSearchable (Alfred has searchable settings, So does LM)
+     * TODO: User scripts?
+     * TODO: Translator
+     * TODO: Snippets
+     * TODO: Time tracker?
+     * TODO: Calendar?
+     */
 
     /**
      * Any outstanding remarks
