@@ -143,7 +143,7 @@ export let data: IApplicationInfo[] = [
         //https://mathjs.org/examples/browser/custom_separators.html
         //https://mathjs.org/examples/browser/custom_separators.html.html
         calculatorSupportsCustomDecimalSeperator: "PlannedShortTerm",
-        calculatorSupportsCustomThousandsSeperator: "TBC",
+        calculatorSupportsCustomThousandsSeperator: false,
 
         //Final remarks
         remarks: "",
@@ -251,8 +251,8 @@ export let data: IApplicationInfo[] = [
         calculatorHasNumberFormats: false,
         calculatorOperatorList: "+,-,/,*,**".split(","),
         calculatorIsExtendable: false,
-        calculatorSupportsCustomDecimalSeperator: "TBC",
-        calculatorSupportsCustomThousandsSeperator: "TBC",
+        calculatorSupportsCustomDecimalSeperator: false,
+        calculatorSupportsCustomThousandsSeperator: false,
     },
     {
         applicationName: "Zazu",

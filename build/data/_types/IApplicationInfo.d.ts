@@ -225,6 +225,85 @@ export declare type IApplicationInfo = {
      */
     themesCanChangeLayout: IPlannableItem<boolean>;
     /**
+     * Does a calculator applet/plugin/feature exist?
+     */
+    calculatorExists: IPlannableItem<boolean>;
+    /**
+     * Does the application use traditional math syntax. E.G.
+     * 1. True - If you syntax looks like:  5!+sin(30)^3
+     * 2. False - If ** is used for power, etc.
+     */
+    calculatorParserType: "eval" | "custom" | "mathjs" | "TBC" | "N/A";
+    /**
+     * Each value can be assigned a unit, and calculations can be performed
+     * between units. E.G. 4km / (10g) = 0.4 km/h
+     */
+    calculatorSupportsUnits: IPlannableItem<boolean>;
+    /**
+     * Supports conversions from one unit to another e.g:
+     *   5 m to cm ==> 500cm
+     */
+    calculatorSupportsUnitConversions: IPlannableItem<boolean>;
+    /**
+     * Full forward bracket recovery is where an expression e.g. `4/(3+1*2` suggests:
+     *     4/(3+1*2)
+     *     4/(3+1)*2
+     *     4/3+1*2
+     * Partial support for forward bracket recovery will make a limited set of suggestions e.g:
+     *     4/(3+1*2)
+     * alone as this is the easiest to recommend.
+     */
+    calculatorHasForwardBracketRecovery: IPlannableItem<boolean>;
+    /**
+     * Full backward bracket recovery is where an expression e.g. `2*3+2)/4` suggests:
+     *     (2*3+2)/4
+     *     2*(3+2)/4
+     *     2*3+2/4
+     * Partial support for backward bracket recovery will make a limited set of suggestions e.g:
+     *     (2*3+2)/4
+     * as this is the easiest to recommend.
+     */
+    calculatorHasBackwardBracketRecovery: IPlannableItem<boolean>;
+    /**
+     * Does the calculator have the ability to format numbers as binary, decimal, hexadecimal, octodecimal ?
+     * Does the calculator have the ability to format dates?
+     * If yes, then this is true, otherwise false
+     */
+    calculatorHasNumberFormats: IPlannableItem<boolean>;
+    /**
+     * A non-exhaustive list of operators
+     */
+    calculatorOperatorList: string[];
+    /**
+     * Is the calculator extendable with plugins?
+     */
+    calculatorIsExtendable: IPlannableItem<boolean>;
+    /**
+     * Does the calculator support a custom decimal seperator? E.G. In europe sometimes `,` is used instead of `.`:
+     *   `3,1` --> `3.1`
+     */
+    calculatorSupportsCustomDecimalSeperator: IPlannableItem<boolean>;
+    /**
+     * Does the calculator support a custom thousands seperator? Some people like `1_000_000` instead of `1,000,000`
+     */
+    calculatorSupportsCustomThousandsSeperator: IPlannableItem<boolean>;
+    imageMain: string;
+    imageSearch: string;
+    imageSettings: string;
+    imageFileSearch: string;
+    imageCalculator: string;
+    imagesMisc: string[];
+    /**
+     * TODO: Session manager equivalent (LM, alfred has an asterisk because File manager opens in a seperate window, maybe can have search open at the same time)
+     * TODO: LM Recorder equivalent
+     * TODO: SettingsAreSearchable (Alfred has searchable settings, So does LM)
+     * TODO: User scripts?
+     * TODO: Translator
+     * TODO: Snippets
+     * TODO: Time tracker?
+     * TODO: Calendar?
+     */
+    /**
      * Any outstanding remarks
      */
     remarks?: string;
