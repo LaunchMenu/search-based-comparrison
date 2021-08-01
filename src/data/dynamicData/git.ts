@@ -22,8 +22,8 @@ export type ICommitInfo = {
         };
     };
 };
-const queryGitCache: {[key: string]: IReleaseInfo} = {};
-const queryGitCommitCache: {[key: string]: ICommitInfo[]} = {};
+const queryGitCache: { [key: string]: IReleaseInfo } = {};
+const queryGitCommitCache: { [key: string]: ICommitInfo[] } = {};
 export async function gitLatestRelease(repo: string): Promise<IReleaseInfo> {
     let q = `https://api.github.com/repos/${repo}/releases/latest`;
     if (!queryGitCache[q]) {
@@ -70,7 +70,8 @@ export async function gitCommits(repo: string): Promise<ICommitInfo[]> {
     }
 }
 
-const devmode: boolean = true;
+const devmode: boolean = location.host != "launchmenu.github.io";
+console.log({ devmode, host: location.host })
 export async function getGitLastReleaseVersion(repo: string): Promise<string> {
     if (devmode) return "A version";
     let e = await gitLatestRelease(repo);
